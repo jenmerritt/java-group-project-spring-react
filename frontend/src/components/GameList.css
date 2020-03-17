@@ -1,9 +1,9 @@
-.contest-title {
+.game-title {
 	font-family: "Bungee Inline";
 	margin: 10px;
 }
 
-/* .contest-list li {
+/* .game-list li {
 	font-size: 20px;
 	color: #000;
 	border: 4px solid black;
@@ -17,7 +17,7 @@
 	display: inline-block;
 } */
 
-.contest-list ul {
+.game-list ul {
 	list-style-type: none;
 	display: inline;
 	color: blue;

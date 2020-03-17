@@ -1,29 +1,24 @@
 import React, { Component } from 'react'
-import ContestList from '../components/ContestList.js'
+import GameList from '../components/GameList.js'
 import NavBar from '../components/NavBar'
 import {BrowserRouter as Router, Route } from "react-router-dom"
-import ContestForm from '../components/ContestForm.js'
+import GameForm from '../components/GameForm.js'
 
 class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      contests:  [],
-      // createdContest: null,
-      // createdGuessable: null,
-      // createdPlayer: null
+      games:  []
 
     }
-    this.handleContestSubmit = this.handleContestSubmit.bind(this);
-    // this.handleGuessableSubmit = this.handleGuessableSubmit.bind(this);
+    this.handleGameSubmit = this.handleGameSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
-    this.handleSelectedContest = this.handleSelectedContest.bind(this);
-    this.handleDeleteContest = this.handleDeleteContest.bind(this);
+    this.handleSelectedGame = this.handleSelectedGame.bind(this);
+    this.handleDeleteGame = this.handleDeleteGame.bind(this);
   }
 
-  handleDeleteContest(deletedContestId) {
-  console.log(deletedContestId)
-  const url=`http://localhost:8080/contests/${deletedContestId}`
+  handleDeleteGame(deletedGameId) {
+  const url=`http://localhost:8080/games/${deletedGameId}`
   fetch(url, {
         method: 'DELETE',
         headers: {
@@ -33,47 +28,45 @@ class Dashboard extends Component {
         body: JSON.stringify({
         })
       }).then(() => {
-            const newContestArray = this.state.contests.filter(contest => contest.id !== deletedContestId)
-            this.setState({contests: newContestArray})
+            const newGameArray = this.state.games.filter(game => game.id !== deletedGameId)
+            this.setState({games: newGameArray})
            })
      }
 
 
   componentDidMount(){
-      const url = 'http://localhost:8080/contests'
+      const url = 'http://localhost:8080/games'
 
       fetch(url)
       .then(res => res.json())
-      .then(contests => this.setState({ contests: contests._embedded.contests }))
+      .then(games => this.setState({ games: games._embedded.games }))
       .catch(err => console.error);
-
-      this.setState({contestAdded: false})
   }
 
-  handleSelectedContest(selectedContest){
+  handleSelectedGame(selectedGame){
     this.setState({
-      createdContest: selectedContest
+      createdGame: selectedGame
     })
   }
 
-  handleContestSubmit(submittedContest) {
-    console.log(submittedContest);
+  handleGameSubmit(submittedGame) {
+    console.log(submittedGame);
 
-    fetch('http://localhost:8080/contests', {
+    fetch('http://localhost:8080/games', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        title: submittedContest.title
+        title: submittedGame.title
       })
     })
     .then(res => res.json())
-    .then(contest =>{
-          const updatedContests = [...this.state.contests, contest];
+    .then(game =>{
+          const updatedGames = [...this.state.games, game];
           this.setState({
-            contests: updatedContests
+            games: updatedGames
           });
         })
   }
@@ -89,8 +82,8 @@ class Dashboard extends Component {
       },
       body: JSON.stringify({
         predictionTitle: submittedPrediction.predictionTitle,
-        player: `http://localhost:8080/players/${this.state.createdPlayer.id}`,
-        guessable: `http://localhost:8080/guessables/${this.state.createdGuessable.id}`
+        friend: `http://localhost:8080/players/${this.state.createdPlayer.id}`,
+        criteria: `http://localhost:8080/guessables/${this.state.createdGuessable.id}`
       })
     })
     .then(res => res.json())
@@ -106,15 +99,15 @@ class Dashboard extends Component {
         <React.Fragment>
         <NavBar/>
             <Route
-            path="/add-contest"
-            render={() => <ContestForm onContestSubmit={this.handleContestSubmit}
-            createdContest={this.state.createdContest} createdPlayer={this.state.createdPlayer} onPlayerSubmit={this.handlePlayerSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
+            path="/add-game"
+            render={() => <GameForm onGameSubmit={this.handleGameSubmit}
+            createdGame={this.state.createdGame} createdFriend={this.state.createdFriend} onFriendSubmit={this.handleFriendSubmit} onPredictionSubmit={this.handlePredictionSubmit} />}
             />
             <Route
             exact
             path="/"
-            render={() => <ContestList contests={this.state.contests} onContestSelect={this.handleSelectedContest} onContestDelete={this.handleDeleteContest}
-            onGuessableSubmit={this.handleGuessableSubmit} />}
+            render={() => <GameList games={this.state.games} onGameSelect={this.handleSelectedGame} onGameDelete={this.handleDeleteGame}
+            onCriteriaSubmit={this.handleCriteriaSubmit} />}
             />
         </React.Fragment>
       </Router>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class AddPlayer extends Component {
+class AddFriend extends Component {
 
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class AddPlayer extends Component {
     if (!name) {
       return
     }
-    this.props.onPlayerSubmit({
+    this.props.onFriendSubmit({
       name: name
     })
     this.setState({
@@ -34,14 +34,14 @@ class AddPlayer extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <h3>Add a Player!</h3>
+        <h3>Add a Friend!</h3>
         <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
         <div>
-          <input className="form-submit" type="submit" value="Submit Player" />
+          <input className="form-submit" type="submit" value="Save Friend" />
         </div>
       </form>
     )
   }
 }
 
-export default AddPlayer
+export default AddFriend

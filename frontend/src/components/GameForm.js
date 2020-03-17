@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class ContestForm extends Component {
+class GameForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,7 +17,7 @@ class ContestForm extends Component {
     if (!title) {
       return
     }
-    this.props.onContestSubmit({
+    this.props.onGameSubmit({
       title: title
     })
     this.setState({
@@ -35,7 +35,7 @@ class ContestForm extends Component {
         <>
           <form onSubmit={this.handleSubmit}>
             <div className="input-wrap">
-              <h1>Enter Name Of Contest</h1>
+              <h1>Game Title:</h1>
               <input className="form-text" type="text" value={this.state.title} onChange={this.handleTitleChange} />
             </div>
             <input className="form-submit" type="submit" value="Submit" />
@@ -46,4 +46,4 @@ class ContestForm extends Component {
 }
 
 
-export default ContestForm
+export default GameForm

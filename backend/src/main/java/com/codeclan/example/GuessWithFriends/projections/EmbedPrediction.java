@@ -11,7 +11,7 @@ import java.util.List;
 public interface EmbedPrediction {
     String getId();
     String getTitle();
-    Game getContest();
+    Game getGame();
     String getResult();
     List<Prediction> getPredictions();
 }

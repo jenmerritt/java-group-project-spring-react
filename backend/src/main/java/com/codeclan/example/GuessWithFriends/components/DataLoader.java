@@ -34,7 +34,7 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) {
 
-//        Korfball Contest:
+//        Korfball Game:
 
         Game game1 = new Game("Korfball League");
         gameRepo.save(game1);
@@ -73,7 +73,7 @@ public class DataLoader implements ApplicationRunner {
         Prediction prediction12 = new Prediction("48", friend2, criteria6);
         predictionRepo.save(prediction12);
 
-//        Football Contest
+//        Football Game
 
         Game game2 = new Game("Premier League");
         gameRepo.save(game2);

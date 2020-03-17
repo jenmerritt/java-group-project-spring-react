@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import './player-form.css'
+import './FriendForm.css'
 
-class AddPlayerForm extends Component {
+class AddFriendForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -19,7 +19,7 @@ class AddPlayerForm extends Component {
     if (!name) {
       return
     }
-    this.props.onPlayerSubmit({
+    this.props.onFriendSubmit({
       name: name
     })
     this.setState({
@@ -35,11 +35,11 @@ class AddPlayerForm extends Component {
     return(
     <form onSubmit={this.handleSubmit} className="">
       <section>
-        <h1 className="title-text">Add a Player and Predictions</h1>
-        <h2>Player Name</h2>
+        <h1 className="title-text">Add a Friend and Predictions</h1>
+        <h2>Friend Name</h2>
             <input className="form-text" value={this.state.name} onChange={this.handleNameChange} />
           <div>
-            <input className="form-submit" type="submit" value="Submit Player" />
+            <input className="form-submit" type="submit" value="Save Friend" />
           </div>
         </section>
        
@@ -49,4 +49,4 @@ class AddPlayerForm extends Component {
 
 }
 
-export default AddPlayerForm
+export default AddFriendForm
