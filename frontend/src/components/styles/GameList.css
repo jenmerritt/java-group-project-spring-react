@@ -26,6 +26,10 @@
 	float:left;
 }
 
+.game-list li:hover{
+	cursor: pointer;
+}
+
 #game-list-wrapper{
 	display: flex;
 	width:100%;

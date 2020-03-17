@@ -10,7 +10,7 @@ function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
   if (selectedGame != null && selectedGame.hasOwnProperty('criterias')) {
     return (
       <>
-        <h3 className="title-text">{selectedGame.title}</h3>
+        <h1 className="game-title">{selectedGame.title}</h1>
         <ul className="criteria-list">
           {selectedGame.criterias.map(criteria => {
             return <li value={criteria.id} key={criteria.id} onClick={handleEvent}>{criteria.title}</li>
