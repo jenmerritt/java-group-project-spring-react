@@ -1,4 +1,4 @@
-package com.codeclan.example.BragginRights.models;
+package com.codeclan.example.GuessWithFriends.models;
 
 import javax.persistence.*;
 
@@ -14,19 +14,19 @@ public class Prediction {
     private String predictionTitle;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name="player_id", nullable = false)
-    private Player player;
+    @JoinColumn(name="friend_id", nullable = false)
+    private Friend friend;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name="guessable_id", nullable=false)
-    private Guessable guessable;
+    @JoinColumn(name="criteria_id", nullable=false)
+    private Criteria criteria;
 
 
-    public Prediction(String predictionTitle, Player player, Guessable guessable) {
+    public Prediction(String predictionTitle, Friend friend, Criteria criteria) {
         this.id = id;
         this.predictionTitle = predictionTitle;
-        this.player = player;
-        this.guessable = guessable;
+        this.friend = friend;
+        this.criteria = criteria;
 
     }
 
@@ -41,20 +41,20 @@ public class Prediction {
         this.id = id;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Friend getFriend() {
+        return friend;
     }
 
-    public void setPlayer(Player player) {
-        this.player = player;
+    public void setFriend(Friend friend) {
+        this.friend = friend;
     }
 
-    public Guessable getGuessable() {
-        return guessable;
+    public Criteria getCriteria() {
+        return criteria;
     }
 
-    public void setGuessable(Guessable guessable) {
-        this.guessable = guessable;
+    public void setCriteria(Criteria criteria) {
+        this.criteria = criteria;
     }
 
     public String getPredictionTitle() {

@@ -1,4 +1,4 @@
-package com.codeclan.example.BragginRights.models;
+package com.codeclan.example.GuessWithFriends.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="players")
-public class Player {
+@Table(name="friends")
+public class Friend {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +18,16 @@ public class Player {
     private String name;
 
     @JsonIgnore
-    @OneToMany(mappedBy="player", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy="friend", cascade = CascadeType.REMOVE)
     private List<Prediction> predictions;
 
-    public Player(String name) {
+    public Friend(String name) {
         this.id = id;
         this.name = name;
         this.predictions = new ArrayList<Prediction>();
     }
 
-    public Player(){
+    public Friend(){
     }
 
     public Long getId() {

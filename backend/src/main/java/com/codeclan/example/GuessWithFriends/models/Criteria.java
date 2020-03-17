@@ -1,12 +1,12 @@
-package com.codeclan.example.BragginRights.models;
+package com.codeclan.example.GuessWithFriends.models;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name="guessables")
-public class Guessable {
+@Table(name="criterias")
+public class Criteria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,24 +18,23 @@ public class Guessable {
     @Column(name="result")
     private String result;
 
-    @OneToMany(mappedBy = "guessable",cascade = CascadeType.REMOVE)
-    // Changed this from Guessable to predictions
+    @OneToMany(mappedBy = "criteria",cascade = CascadeType.REMOVE)
     private List<Prediction> predictions;
 
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name="contest_id", nullable = false)
-    private Contest contest;
+    @JoinColumn(name="game_id", nullable = false)
+    private Game game;
 
-    public Guessable(String title, Contest contest) {
+    public Criteria(String title, Game game) {
         this.id = id;
         this.title = title;
-        this.contest = contest;
+        this.game = game;
         this.result = "";
         this.predictions = new ArrayList<Prediction>();
 
     }
 
-    public Guessable(){
+    public Criteria(){
     }
 
     public Long getId() {
@@ -62,12 +61,12 @@ public class Guessable {
         this.result = result;
     }
 
-    public Contest getContest() {
-        return contest;
+    public Game getGame() {
+        return game;
     }
 
-    public void setContest(Contest contest) {
-        this.contest = contest;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public List<Prediction> getPredictions() {

@@ -1,16 +1,14 @@
-package com.codeclan.example.BragginRights.models;
+package com.codeclan.example.GuessWithFriends.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cascade;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "contests")
-public class Contest {
+@Table(name = "games")
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,16 +18,16 @@ public class Contest {
     private String title;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "contest", cascade = CascadeType.REMOVE)
-    private List<Guessable> guessables;
+    @OneToMany(mappedBy = "game", cascade = CascadeType.REMOVE)
+    private List<Criteria> criterias;
 
 
-    public Contest(String title) {
+    public Game(String title) {
         this.title = title;
-        this.guessables = new ArrayList<Guessable>();
+        this.criterias = new ArrayList<Criteria>();
     }
 
-    public Contest(){
+    public Game(){
     }
 
     public Long getId() {
@@ -48,12 +46,11 @@ public class Contest {
         this.title = title;
     }
 
-    public List<Guessable> getGuessables() {
-        return guessables;
+    public List<Criteria> getCriterias() {
+        return criterias;
     }
 
-    public void setGuessables(ArrayList<Guessable> guessables) {
-        this.guessables = guessables;
+    public void setCriterias(List<Criteria> criterias) {
+        this.criterias = criterias;
     }
-
 }

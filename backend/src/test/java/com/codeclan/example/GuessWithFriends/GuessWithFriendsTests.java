@@ -1,10 +1,10 @@
-package com.codeclan.example.BragginRights;
+package com.codeclan.example.GuessWithFriends;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BragginRightsApplicationTests {
+class GuessWithFriendsTests {
 
 	@Test
 	void contextLoads() {

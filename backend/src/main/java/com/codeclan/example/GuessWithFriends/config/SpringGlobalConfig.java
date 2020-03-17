@@ -1,9 +1,9 @@
-package com.codeclan.example.BragginRights.config;
+package com.codeclan.example.GuessWithFriends.config;
 
-import com.codeclan.example.BragginRights.models.Contest;
-import com.codeclan.example.BragginRights.models.Guessable;
-import com.codeclan.example.BragginRights.models.Player;
-import com.codeclan.example.BragginRights.models.Prediction;
+import com.codeclan.example.GuessWithFriends.models.Game;
+import com.codeclan.example.GuessWithFriends.models.Criteria;
+import com.codeclan.example.GuessWithFriends.models.Friend;
+import com.codeclan.example.GuessWithFriends.models.Prediction;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
 import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
@@ -20,7 +20,7 @@ public class SpringGlobalConfig implements RepositoryRestConfigurer, WebMvcConfi
 
     @Override
     public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config) {
-        config.exposeIdsFor(Contest.class, Guessable.class, Player.class, Prediction.class);
+        config.exposeIdsFor(Game.class, Criteria.class, Friend.class, Prediction.class);
         config.getCorsRegistry()
                 .addMapping(CORS_BASE_PATTERN)
                 .allowedOrigins(ALLOWED_ORIGINS)
