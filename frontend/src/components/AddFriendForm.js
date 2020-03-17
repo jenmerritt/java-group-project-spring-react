@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './FriendForm.css'
+import './styles/FriendForm.css'
 
 class AddFriendForm extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import CriteriaList from './CriteriaList'
 import PredictionList from './PredictionList'
-import './GameList.css';
+import './styles/GameList.css';
 import AddCriteriaForm from './AddCriteriaForm';
 import AddFriendForm from './AddFriendForm';
 import DeleteGame from './DeleteGame';

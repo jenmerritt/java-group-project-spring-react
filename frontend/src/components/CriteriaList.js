@@ -1,5 +1,5 @@
 import React from 'react';
-import './CriteriaList.css'
+import './styles/CriteriaList.css'
 
 function CriteriaList({ selectedGame, onCriteriaClick }) {
 

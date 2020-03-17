@@ -1,0 +1,9 @@
+.game-title {
+	margin: 10px;
+}
+
+.game-list ul {
+	list-style-type: none;
+	display: inline;
+	text-align: center;
+}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './AddPredictionForm.css'
+import './styles/AddPredictionForm.css'
 
 
 class AddPredictionForm extends Component {

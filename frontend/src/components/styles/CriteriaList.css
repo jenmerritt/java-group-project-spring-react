@@ -1,8 +1,7 @@
 li {
-	font-size: 20px;
+	font-size: 14px;
 	color: #000;
-	border: 4px solid black;
-	border-radius: 50px;
+	border: 1px solid black;
 	padding: 20px;
 	padding-bottom: 20px;
 	margin: 20px;
@@ -14,7 +13,6 @@ li {
 
 .criteria-list {
 	list-style-type: none;
-	color: blue;
 	text-align: center;
 	margin: 50px;
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import './PredictionList.css';
+import './styles/PredictionList.css';
 
 function PredictionList({ selectedCriteria }) {
 
