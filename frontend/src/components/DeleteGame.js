@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/CriteriaList.css'
 
 function DeleteGame (props) {
 
@@ -10,7 +11,7 @@ function deleteGame(event) {
 if(props.selectedGame != null){
 return (
 <form onSubmit={deleteGame}>
-<input type="submit" value="Delete game" className="form-submit" />
+<input type="submit" value="Delete Game" className="delete" />
 </form>
 )} return null
 

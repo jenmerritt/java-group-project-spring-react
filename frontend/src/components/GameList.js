@@ -4,9 +4,8 @@ import PredictionList from './PredictionList'
 import './styles/GameList.css';
 import AddCriteriaForm from './AddCriteriaForm';
 import AddFriendForm from './AddFriendForm';
-import DeleteGame from './DeleteGame';
 import AddPredictionForm from './AddPredictionForm.js'
-
+import DeleteGame from './DeleteGame';
 
 class GameList extends Component {
 
@@ -31,7 +30,6 @@ class GameList extends Component {
     const selectedGame = this.props.games.find(game => {
       return game.id == event.target.value
     })
-    this.props.onGameSelect(selectedGame)
     this.setState({
       selectedGame: selectedGame
     })
@@ -111,15 +109,20 @@ class GameList extends Component {
 
     return (
       <>
-        <h1 className="main-heading">Games</h1>
-        <ul className="game-list">
-          {this.props.games.map(game => {
-            return <li value={game.id} key={game.id} onClick={this.handleSelectGame}>{game.title}</li>
-          })}
-        </ul>
-        <a href="http://localhost:3000/add-game" className="form-submit">Add New Game</a>
-        <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
-        <CriteriaList selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
+        <section id="game-list-wrapper">
+          <article id="game-list-left">
+            <h1 className="main-heading">Your Games</h1>
+          </article>
+          <article id="game-list-right">
+            <ul className="game-list">
+              {this.props.games.map(game => {
+                return <li value={game.id} key={game.id} onClick={this.handleSelectGame}>{game.title}</li>
+              })}
+            </ul>
+          </article>  
+        </section>
+        <hr/>
+        <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
         <PredictionList selectedCriteria={this.state.selectedCriteria} />
 
         {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
@@ -130,6 +133,7 @@ class GameList extends Component {
 
       { this.state.createdFriend ? <AddPredictionForm selectedGame={this.state.selectedGame}
       createdFriend={this.state.createdFriend} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
+      <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
       </>
     )
 

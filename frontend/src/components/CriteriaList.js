@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles/CriteriaList.css'
 
-function CriteriaList({ selectedGame, onCriteriaClick }) {
+function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
 
   function handleEvent(event) {
     onCriteriaClick(event.target.value)
   }
 
-  if (selectedGame != null) {
+  if (selectedGame != null && selectedGame.hasOwnProperty('criterias')) {
     return (
       <>
         <h3 className="title-text">{selectedGame.title}</h3>
@@ -16,10 +16,11 @@ function CriteriaList({ selectedGame, onCriteriaClick }) {
             return <li value={criteria.id} key={criteria.id} onClick={handleEvent}>{criteria.title}</li>
           })}
         </ul>
-        
       </>
     )
-  } return null
+  } 
+  
+  return null
 }
 
 export default CriteriaList;

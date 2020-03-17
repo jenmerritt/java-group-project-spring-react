@@ -1,16 +1,42 @@
-.game-list ul {
-	list-style-type: none;
-	display: inline;
-}
-
 @media screen and (min-width: 501px) {
 	.main-heading{
 		font-size: 40px;
+		margin: 0;
+		text-align: left;
 	}
   }
   
   @media screen and (max-width: 500px) {
 	.main-heading{
 		font-size: 20px;
+		margin: 0;
+		text-align: left;
 	}
   }
+
+.game-list ul {
+	list-style-type: none;
+}
+
+.game-list li{
+	border: 1px solid black;
+	padding: 20px;
+	border-radius: 20px;
+	margin: 10px;
+	float:left;
+}
+
+#game-list-wrapper{
+	display: flex;
+	width:100%;
+	flex-direction: row;
+}
+
+#game-list-left{
+	flex-grow: 1;
+}
+
+#game-list-right{
+	flex-grow: 10;	
+
+}

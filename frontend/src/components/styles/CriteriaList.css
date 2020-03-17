@@ -7,3 +7,15 @@
 	padding: 20px;
 	margin: 10px;
 }
+
+.delete{
+	border: 1px solid white;
+	background-color: white;
+	color: grey;
+	margin-top: 20%;
+}
+
+.delete:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}
