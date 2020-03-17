@@ -111,8 +111,8 @@ class GameList extends Component {
 
     return (
       <>
-        <h1 className="title-text">Games</h1>
-        <ul className="Game-list">
+        <h1 className="main-heading">Games</h1>
+        <ul className="game-list">
           {this.props.games.map(game => {
             return <li value={game.id} key={game.id} onClick={this.handleSelectGame}>{game.title}</li>
           })}

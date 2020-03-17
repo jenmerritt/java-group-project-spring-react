@@ -1,6 +1,56 @@
-#navbar ul {
+#navbar{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+#left-nav{
+	flex-grow: 3;
+}
+
+#right-nav{
+	flex-grow: 1;
+}
+
+#navbar-items li{
 	list-style-type: none;
-	text-align: center;
-	font-size: 14px;
+	display: inline-block;
+	margin: 10px;
+}
+
+#navbar-items li a:hover{
+	font-weight: bold;
+}
+
+#navbar-items li a:visited{
+	color: black;
+}
+
+.site-name{
+	margin: 0;
+	font-size: 40px;
+	text-align: left;
+}
+
+.site-name a{
 	text-decoration: none;
+}
+
+.site-name a:hover{
+	text-decoration: underline;
+}
+
+.site-name a:visited{
+	text-decoration: underline;
+	color: black;
+}
+
+.sub-heading{
+	margin: 0;
+	text-align: left;
+}
+
+hr{
+	border: 2px solid grey;
+	margin: 20px 0px;
 }
