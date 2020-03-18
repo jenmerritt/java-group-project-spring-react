@@ -1,46 +1,20 @@
 @media screen and (min-width: 501px) {
-	.main-heading{
-		font-size: 40px;
-		margin: 0;
-		text-align: left;
+	.game-list{
+		width: 350px;
+		font-size:30px;
+		font-family: "Courier";
 	}
   }
   
   @media screen and (max-width: 500px) {
-	.main-heading{
-		font-size: 20px;
-		margin: 0;
-		text-align: left;
+	.game-list{
+		width: 150px;
+		font-size:16px;
+	 	font-family: "Courier";
 	}
   }
 
-.game-list ul {
-	list-style-type: none;
-}
-
-.game-list li{
-	border: 1px solid black;
-	padding: 20px;
-	border-radius: 20px;
-	margin: 10px;
-	float:left;
-}
-
-.game-list li:hover{
-	cursor: pointer;
-}
-
 #game-list-wrapper{
-	display: flex;
 	width:100%;
-	flex-direction: row;
-}
-
-#game-list-left{
-	flex-grow: 1;
-}
-
-#game-list-right{
-	flex-grow: 10;	
-
+	margin: 0 auto;
 }

@@ -110,16 +110,12 @@ class GameList extends Component {
     return (
       <>
         <section id="game-list-wrapper">
-          <article id="game-list-left">
-            <h1 className="main-heading">Your Games</h1>
-          </article>
-          <article id="game-list-right">
             <select className="game-list" onChange={this.handleSelectGame} >
+              <option disabled selected >Select a Game</option>
               {this.props.games.map(game => {
                 return <option value={game.id} key={game.id} >{game.title}</option>
               })}
             </select>
-          </article>  
         </section>
         <hr/>
         <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
