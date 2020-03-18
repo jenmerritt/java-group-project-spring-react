@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import CriteriaList from './CriteriaList'
 import PredictionList from './PredictionList'
 import './styles/GameList.css';
@@ -106,34 +107,34 @@ class GameList extends Component {
 
 
   render() {
+    if(this.props.games.length === 0){
+      return <Link to="/add-game"><p>Add Game</p></Link>
+    }
+      return (
+        <>
+          <section id="game-list-wrapper">
+              <select className="game-list" onChange={this.handleSelectGame} >
+                <option disabled selected >Select a Game</option>
+                {this.props.games.map(game => {
+                  return <option value={game.id} key={game.id} >{game.title}</option>
+                })}
+              </select>
+          </section>
+          <hr/>
+          <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
+          <PredictionList selectedCriteria={this.state.selectedCriteria} />
 
-    return (
-      <>
-        <section id="game-list-wrapper">
-            <select className="game-list" onChange={this.handleSelectGame} >
-              <option disabled selected >Select a Game</option>
-              {this.props.games.map(game => {
-                return <option value={game.id} key={game.id} >{game.title}</option>
-              })}
-            </select>
-        </section>
-        <hr/>
-        <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
-        <PredictionList selectedCriteria={this.state.selectedCriteria} />
+          {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
+            onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
 
-        {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
-          onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
+        { this.state.selectedGame ? <AddFriendForm selectedGame={this.state.selectedGame}
+        handleFriendSubmit={this.handleFriendSubmit} /> : null}
 
-      { this.state.selectedGame ? <AddFriendForm selectedGame={this.state.selectedGame}
-      handleFriendSubmit={this.handleFriendSubmit} /> : null}
-
-      { this.state.createdFriend ? <AddPredictionForm selectedGame={this.state.selectedGame}
-      createdFriend={this.state.createdFriend} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
-      <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
-      </>
-    )
-
-
+        { this.state.createdFriend ? <AddPredictionForm selectedGame={this.state.selectedGame}
+        createdFriend={this.state.createdFriend} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
+        <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
+        </>
+      )
   }
 }
 
