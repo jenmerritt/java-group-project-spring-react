@@ -114,11 +114,11 @@ class GameList extends Component {
             <h1 className="main-heading">Your Games</h1>
           </article>
           <article id="game-list-right">
-            <ul className="game-list">
+            <select className="game-list" onChange={this.handleSelectGame} >
               {this.props.games.map(game => {
-                return <li value={game.id} key={game.id} onClick={this.handleSelectGame}>{game.title}</li>
+                return <option value={game.id} key={game.id} >{game.title}</option>
               })}
-            </ul>
+            </select>
           </article>  
         </section>
         <hr/>
