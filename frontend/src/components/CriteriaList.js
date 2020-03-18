@@ -1,5 +1,6 @@
 import React from 'react';
-import './styles/CriteriaList.css'
+import './styles/CriteriaList.css';
+import PredictionList from './PredictionList.js';
 
 function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
 
@@ -14,9 +15,14 @@ function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
         <section className="criteria-list">
           {selectedGame.criterias.map(criteria => {
             return(
-                  <article className="individual-criteria">
-                    <h3>{criteria.title}</h3>
-                  </article>
+                  <section className="individual-criteria">
+                    <article className="criteria-title">
+                      <h3>{criteria.title}</h3>
+                    </article>
+                    <article className="prediction-list">
+                      <PredictionList criteria={criteria} />
+                    </article>
+                  </section>
           )})}
         </section>
       </>

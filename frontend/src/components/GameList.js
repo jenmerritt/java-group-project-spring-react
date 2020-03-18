@@ -114,7 +114,7 @@ class GameList extends Component {
         <>
           <section id="game-list-wrapper">
               <select className="game-list" onChange={this.handleSelectGame} >
-                <option disabled selected >Select a Game</option>
+                <option disabled default selected>Select a Game</option>
                 {this.props.games.map(game => {
                   return <option value={game.id} key={game.id} >{game.title}</option>
                 })}

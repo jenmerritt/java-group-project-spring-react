@@ -1,14 +1,14 @@
 import React from 'react';
 import './styles/PredictionList.css';
 
-function PredictionList({ selectedCriteria }) {
+function PredictionList({ criteria }) {
 
-  if (selectedCriteria != null && selectedCriteria._embedded.predictions != null) {
+  if (criteria != null && criteria.hasOwnProperty('_embedded.predictions') && criteria._embedded.predictions != null) {
     return (
       <>
         <ul className="prediction-list">
-          {selectedCriteria._embedded.predictions.map(prediction => {
-            return <ul className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.friend.name} predicts {prediction.predictionTitle}</ul>
+          {criteria._embedded.predictions.map(prediction => {
+            return <p className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.title}</p>
           })}
         </ul>
       </>
