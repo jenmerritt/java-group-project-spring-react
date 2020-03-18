@@ -123,7 +123,17 @@ class GameList extends Component {
           <hr/>
           <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
           <PredictionList selectedCriteria={this.state.selectedCriteria} />
+          
 
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
           {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
             onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
 

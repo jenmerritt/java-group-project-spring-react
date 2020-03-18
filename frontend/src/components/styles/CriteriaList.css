@@ -1,11 +1,16 @@
-.criteria-list li {
-	font-size: 14px;
-	color: #000;
-	border: 1px solid black;
-	list-style-type: none;
-	display: inline-block;
-	padding: 20px;
-	margin: 10px;
+.criteria-list{
+	display: flex;
+	flex-direction: row;
+	padding: 0;
+	margin: 0;
+	width:100%;
+	border: 1px solid red;
+}
+
+.individual-criteria{
+	width: 33%;
+	border: 1px solid blue;
+	margin: 5px;
 }
 
 .delete{

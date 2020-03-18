@@ -11,16 +11,19 @@ function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
     return (
       <>
         <h1 className="game-title">{selectedGame.title}</h1>
-        <ul className="criteria-list">
+        <section className="criteria-list">
           {selectedGame.criterias.map(criteria => {
-            return <li value={criteria.id} key={criteria.id} onClick={handleEvent}>{criteria.title}</li>
-          })}
-        </ul>
+            return(
+                  <article className="individual-criteria">
+                    <h3>{criteria.title}</h3>
+                  </article>
+          )})}
+        </section>
       </>
     )
   } 
-  
-  return null
+
+    return null
 }
 
 export default CriteriaList;
