@@ -114,15 +114,6 @@ class GameList extends Component {
           <CriteriaList selectedGame={this.state.selectedGame} />
           
 
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
           {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
             onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
 

@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './styles/AddCriteriaForm.css';
 
 class AddCriteriaForm extends Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class AddCriteriaForm extends Component {
     };
     this.handleCriteriaChange = this.handleCriteriaChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.toggleCriteriaFormClass = this.toggleCriteriaFormClass.bind(this)
   }
 
   handleSubmit(event) {
@@ -22,7 +24,8 @@ class AddCriteriaForm extends Component {
       title: criteriaTitle
     })
     this.setState({
-      criteria: ""
+      criteria: "",
+      criteriaFormState: false
     })
   }
 
@@ -30,10 +33,16 @@ handleCriteriaChange(event) {
     this.setState({ criteria: event.target.value })
   }
 
+  toggleCriteriaFormClass(){
+    const currentState = this.state.criteriaFormState;
+    this.setState({criteriaFormState: !currentState})
+  }
+
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
+        <button className="add-criteria-button" onClick={this.toggleCriteriaFormClass}>Add Criteria</button>
+        <form className={this.state.criteriaFormState ? null : "hidden"} onSubmit={this.handleSubmit}>
           <h1 className="title-text">Add criteria to {this.props.selectedGame.title}</h1>
           <input className="form-text" value={this.state.criteria} onChange={this.handleCriteriaChange} />
           <div>
