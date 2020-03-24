@@ -18,7 +18,6 @@ class GameList extends Component {
       createdFriend: null
     }
     this.handleSelectGame = this.handleSelectGame.bind(this)
-    this.handleSelectCriteria = this.handleSelectCriteria.bind(this)
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleFriendSubmit = this.handleFriendSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
@@ -36,17 +35,6 @@ class GameList extends Component {
     })
 
 
-  }
-
-  handleSelectCriteria(id) {
-    const selectedCriteria = this.state.selectedGame.criterias.find(criteria => {
-      return criteria.id === id
-    })
-    const correctId = selectedCriteria.id
-    fetch(`http://localhost:8080/criterias/${correctId}`)
-      .then(res => res.json())
-      .then(fetchedCriteria => this.setState({ selectedCriteria: fetchedCriteria }))
-      .catch(err => console.error);
   }
 
   handleCriteriaSubmit(submittedCriteria) {
@@ -121,7 +109,7 @@ class GameList extends Component {
               </select>
           </section>
           <hr/>
-          <CriteriaList onGameDelete={this.props.onGameDelete} selectedGame={this.state.selectedGame} onCriteriaClick={this.handleSelectCriteria} />
+          <CriteriaList selectedGame={this.state.selectedGame} />
           <PredictionList selectedCriteria={this.state.selectedCriteria} />
           
 

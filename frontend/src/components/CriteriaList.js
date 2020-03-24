@@ -1,14 +1,11 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './styles/CriteriaList.css';
 import PredictionList from './PredictionList.js';
 
-function CriteriaList({ selectedGame, onCriteriaClick, onGameDelete }) {
-
-  function handleEvent(event) {
-    onCriteriaClick(event.target.value)
-  }
+function CriteriaList({ selectedGame }) {
 
   if (selectedGame != null && selectedGame.hasOwnProperty('criterias')) {
+
     return (
       <>
         <h1 className="game-title">{selectedGame.title}</h1>
