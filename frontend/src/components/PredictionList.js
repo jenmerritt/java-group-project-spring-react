@@ -25,11 +25,11 @@ class PredictionList extends Component {
   render(){
       return (
         <>
-          <ul className="prediction-list">
+          <section className="prediction-list">
             {this.state.selectedPredictions.map(prediction => {
-              return <p className="list-of-predictions" value={prediction.id} key={prediction.id} >{prediction.predictionTitle}</p>
+              return <article className="prediction-item" value={prediction.id} key={prediction.id} ><p>{prediction.friend.name} predicts {prediction.predictionTitle}</p></article>
             })}
-          </ul>
+          </section>
         </>
       )
   }

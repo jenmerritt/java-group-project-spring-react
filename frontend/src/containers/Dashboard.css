@@ -2,4 +2,5 @@
     border: 2px solid grey;
     margin: 0;
     padding: 20px;
+    min-width: 250px;
 }

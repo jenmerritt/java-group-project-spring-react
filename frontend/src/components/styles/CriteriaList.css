@@ -1,16 +1,31 @@
 .criteria-list{
 	display: flex;
-	flex-direction: row;
 	padding: 0;
 	margin: 0;
 	width:100%;
 	border: 1px solid red;
 }
 
-.individual-criteria{
-	width: 33%;
-	border: 1px solid blue;
-	margin: 5px;
+@media screen and (min-width: 701px) {
+	.individual-criteria{
+		width: 33%;
+		border: 1px solid blue;
+		margin: 5px;
+	}
+	.criteria-list{
+		flex-direction: row;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.individual-criteria{
+		width: 100%;
+		border: 1px solid blue;
+		margin: 5px;
+	}
+	.criteria-list{
+		flex-direction: column;
+	}
 }
 
 .delete{
