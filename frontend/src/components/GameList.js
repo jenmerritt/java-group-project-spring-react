@@ -110,7 +110,6 @@ class GameList extends Component {
           </section>
           <hr/>
           <CriteriaList selectedGame={this.state.selectedGame} />
-          <PredictionList selectedCriteria={this.state.selectedCriteria} />
           
 
           <br/>

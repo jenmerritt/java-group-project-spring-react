@@ -17,7 +17,7 @@ function CriteriaList({ selectedGame }) {
                       <h3>{criteria.title}</h3>
                     </article>
                     <article className="prediction-list">
-                      <PredictionList criteria={criteria} />
+                      <PredictionList criteriaId={criteria.id} />
                     </article>
                   </section>
           )})}
