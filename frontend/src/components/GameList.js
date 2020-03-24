@@ -54,7 +54,8 @@ class GameList extends Component {
       .then(res => res.json())
       .then(criteria => {
         this.setState({
-          selectedCriteria: criteria
+          selectedCriteria: criteria,
+          selectedGame: criteria._embedded.game
         })
       });
   }
@@ -71,7 +72,8 @@ class GameList extends Component {
       })
     })
     .then(res => res.json())
-    .then(friend => { this.setState({createdFriend: friend })})};
+    .then(friend => { 
+        this.setState({createdFriend: friend })})};
 
     handlePredictionSubmit(submittedPrediction, criteriaPredicted){
       fetch('http://localhost:8080/predictions', {
