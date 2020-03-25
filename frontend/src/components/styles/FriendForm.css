@@ -2,3 +2,14 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+.add-friend-button{
+    float:left;
+    padding: 10px;
+    margin: 10px;
+    font-size: 16px;
+}
+
+.hidden{
+    display: none;
+}

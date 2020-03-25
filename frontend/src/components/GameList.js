@@ -84,7 +84,7 @@ class GameList extends Component {
         },
         body: JSON.stringify({
           predictionTitle: submittedPrediction.title,
-      friend: `http://localhost:8080/friends/${this.state.createdFriend.id}`,
+          friend: `http://localhost:8080/friends/${this.state.createdFriend.id}`,
           criteria: `http://localhost:8080/criterias/${criteriaPredicted.criteria}`
         })
       })
@@ -118,10 +118,11 @@ class GameList extends Component {
             onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
 
         { this.state.selectedGame ? <AddFriendForm selectedGame={this.state.selectedGame}
-        handleFriendSubmit={this.handleFriendSubmit} /> : null}
+        onFriendSubmit={this.handleFriendSubmit} /> : null}
 
-        { this.state.createdFriend ? <AddPredictionForm selectedGame={this.state.selectedGame}
+        { this.state.selectedGame ? <AddPredictionForm selectedGame={this.state.selectedGame}
         createdFriend={this.state.createdFriend} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
+
         <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
         </>
       )
