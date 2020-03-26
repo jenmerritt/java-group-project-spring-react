@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './styles/AddPredictionForm.css'
+import AddFriendForm from './AddFriendForm';
 
 
 class AddPredictionForm extends Component {
@@ -8,16 +9,20 @@ class AddPredictionForm extends Component {
         this.state = {
           prediction: "",
           criteriaToUpdateId: null,
-          predictionFormState: false,
+          friendFormState: false,
           predictionsForGame: [],
-          friendsListForGame: []
+          friendsListForGame: [],
+          selectedFriend: null,
+          predictionFormState: false
         };
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmitPrediction = this.handleSubmitPrediction.bind(this)
         this.handlePredictionChange = this.handlePredictionChange.bind(this)
         this.updateCriteriaState = this.updateCriteriaState.bind(this)
-        this.togglePredictionFormClass = this.togglePredictionFormClass.bind(this)
+        this.toggleFriendFormClass = this.toggleFriendFormClass.bind(this)
         this.fetchPredictions = this.fetchPredictions.bind(this)
         this.setFriendsList = this.setFriendsList.bind(this)
+        this.handleSelectFriend = this.handleSelectFriend.bind(this)
+        this.togglePredictionFormClass = this.togglePredictionFormClass.bind(this)
     }
 
     fetchPredictions(){
@@ -55,7 +60,7 @@ class AddPredictionForm extends Component {
         this.setState({ prediction: event.target.value})
       }
 
-    handleSubmit(event) {
+    handleSubmitPrediction(event) {
         event.preventDefault();
         const prediction = this.state.prediction;
         const criteriaToUpdateId = this.state.criteriaToUpdateId;
@@ -78,6 +83,13 @@ class AddPredictionForm extends Component {
 
       updateCriteriaState(criteriaId){
         this.setState({criteriaToUpdateId: criteriaId})
+        document.getElementById(criteriaId).classList.add('hidden');
+        document.getElementById(criteriaId + "text").classList.remove('hidden');
+      }
+
+      toggleFriendFormClass(){
+        const currentState = this.state.friendFormState;
+        this.setState({friendFormState: !currentState})
       }
 
       togglePredictionFormClass(){
@@ -86,16 +98,14 @@ class AddPredictionForm extends Component {
       }
 
       handleSelectFriend(event) {
-        console.log(event)
-        // this.setState({
-        //   selectedCriteria: null
-        // })
-        // const selectedGame = this.props.games.find(game => {
-        //   return game.id == event.target.value
-        // })
-        // this.setState({
-        //   selectedGame: selectedGame
-        // })
+        const selectedFriend = this.state.friendsListForGame.find(friend => {
+          return friend.id == event.target.value
+        })
+        fetch(`http://localhost:8080/friends/${selectedFriend.id}`)
+        .then(res => res.json())
+        .then(friendFetched => 
+          this.setState({selectedFriend: friendFetched}))
+        .catch(err => console.error)
       }
 
     render(){
@@ -103,22 +113,31 @@ class AddPredictionForm extends Component {
         return(
 
             <>
-              <button className="add-prediction-button" onClick={() => {this.togglePredictionFormClass(); this.fetchPredictions()}}>Manage Predictions</button>
-              <section className={this.state.predictionFormState ? null : "hidden"}>
-                <p>blah</p>
-                  <article>
-                    <select onChange={this.handleSelectFriend} >
-                      <option disabled default selected>Select a Friend</option>
-                      {this.state.friendsListForGame.map(friend => {
-                        return <option value={friend.id} key={friend.id} >{friend.name}</option>
-                      })}
-                    </select>
-                </article>
+              <button className="add-prediction-button" onClick={() => {this.toggleFriendFormClass(); this.fetchPredictions()}}>Add Predictions</button>
+              <section className={this.state.friendFormState ? null : "hidden"}>
+                  <AddFriendForm selectedGame={this.props.selectedGame} onFriendSubmit={this.props.onFriendSubmit} togglePredictionClass={this.togglePredictionFormClass} toggleFriendClass={this.toggleFriendFormClass} />
               </section>
+              <section className={this.state.predictionFormState ? null : "hidden"}>
+                  <p>What does {this.props.createdFriendName} predict?</p>
+                  <article>
+                  {this.props.selectedGame.criterias.map(criteria => {
+                    return (
+                        <form onSubmit={this.handleSubmitPrediction}>
+                          <label>{ criteria.title } Prediction: 
+                            <input className="form-text" onChange={this.handlePredictionChange}></input>
+                          </label>
+                        <input id={criteria.id} type="submit" value="Save" onClick={() => this.updateCriteriaState(criteria.id)} />
+                        <p id={criteria.id + "text"} className="hidden">Saved!</p>
+                        </form>
+                    )}
+                )}
+                  </article> 
+              <button className="add-prediction-button" onClick={this.togglePredictionFormClass}>close</button>
+              </section> 
             </>
 
             )
-}
+  }
 }
 
     export default AddPredictionForm

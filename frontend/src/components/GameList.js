@@ -14,8 +14,8 @@ class GameList extends Component {
     super(props);
     this.state = {
       selectedGame: null,
-      selectedCriteria: null,
-      createdFriend: null
+      createdFriend: null,
+      createdFriendName: null
     }
     this.handleSelectGame = this.handleSelectGame.bind(this)
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
@@ -24,9 +24,6 @@ class GameList extends Component {
   }
 
   handleSelectGame(event) {
-    this.setState({
-      selectedCriteria: null
-    })
     const selectedGame = this.props.games.find(game => {
       return game.id == event.target.value
     })
@@ -54,7 +51,6 @@ class GameList extends Component {
       .then(res => res.json())
       .then(criteria => {
         this.setState({
-          selectedCriteria: criteria,
           selectedGame: criteria._embedded.game
         })
       });
@@ -73,7 +69,10 @@ class GameList extends Component {
     })
     .then(res => res.json())
     .then(friend => { 
-        this.setState({createdFriend: friend })})};
+        this.setState({
+          createdFriend: friend,
+          createdFriendName: friend.name
+        })})};
 
     handlePredictionSubmit(submittedPrediction, criteriaPredicted){
       fetch('http://localhost:8080/predictions', {
@@ -89,9 +88,6 @@ class GameList extends Component {
         })
       })
       .then(res => res.json())
-      .then(AddPredictionForm =>{
-        console.log(submittedPrediction)
-      })
     };
 
 
@@ -114,14 +110,12 @@ class GameList extends Component {
           <CriteriaList selectedGame={this.state.selectedGame} />
           
 
-          {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
+        {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
             onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
 
-        { this.state.selectedGame ? <AddFriendForm selectedGame={this.state.selectedGame}
-        onFriendSubmit={this.handleFriendSubmit} /> : null}
-
         { this.state.selectedGame ? <AddPredictionForm selectedGame={this.state.selectedGame}
-        createdFriend={this.state.createdFriend} onPredictionSubmit={this.handlePredictionSubmit} /> : null }
+        createdFriendName={this.state.createdFriendName} onPredictionSubmit={this.handlePredictionSubmit} selectedGame={this.state.selectedGame}
+        onFriendSubmit={this.handleFriendSubmit} /> : null }
 
         <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
         </>
