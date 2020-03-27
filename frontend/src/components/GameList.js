@@ -15,12 +15,15 @@ class GameList extends Component {
     this.state = {
       selectedGame: null,
       createdFriend: null,
-      createdFriendName: null
+      createdFriendName: null,
+      displayPredictionForm: false,
+      displayCriteriaForm: true
     }
     this.handleSelectGame = this.handleSelectGame.bind(this)
     this.handleCriteriaSubmit = this.handleCriteriaSubmit.bind(this);
     this.handleFriendSubmit = this.handleFriendSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
+    this.triggerPredictionForm = this.triggerPredictionForm.bind(this);
   }
 
   handleSelectGame(event) {
@@ -90,6 +93,13 @@ class GameList extends Component {
       .then(res => res.json())
     };
 
+    triggerPredictionForm(){
+      this.setState({
+        displayPredictionForm: true,
+        displayCriteriaForm: false
+      })
+    }
+
 
 
   render() {
@@ -110,10 +120,10 @@ class GameList extends Component {
           <CriteriaList selectedGame={this.state.selectedGame} />
           
 
-        {this.state.selectedGame ? <AddCriteriaForm selectedGame={this.state.selectedGame}
-            onCriteriaSubmit={this.handleCriteriaSubmit} /> : null}
+        {this.state.selectedGame && this.state.displayCriteriaForm ? <AddCriteriaForm selectedGame={this.state.selectedGame}
+            onCriteriaSubmit={this.handleCriteriaSubmit} triggerPredictionForm={this.triggerPredictionForm} /> : null}
 
-        { this.state.selectedGame ? <AddPredictionForm selectedGame={this.state.selectedGame}
+        { this.state.displayPredictionForm ? <AddPredictionForm selectedGame={this.state.selectedGame}
         createdFriendName={this.state.createdFriendName} onPredictionSubmit={this.handlePredictionSubmit} selectedGame={this.state.selectedGame}
         onFriendSubmit={this.handleFriendSubmit} /> : null }
 

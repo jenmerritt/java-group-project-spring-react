@@ -24,8 +24,7 @@ class AddCriteriaForm extends Component {
       title: criteriaTitle
     })
     this.setState({
-      criteria: "",
-      criteriaFormState: false
+      criteria: ""
     })
   }
 
@@ -42,13 +41,14 @@ handleCriteriaChange(event) {
     return (
       <>
         <button className="add-criteria-button" onClick={this.toggleCriteriaFormClass}>Add Criteria</button>
-        <form className={this.state.criteriaFormState ? null : "hidden"} onSubmit={this.handleSubmit}>
-          <h1 className="title-text">Add criteria to {this.props.selectedGame.title}</h1>
-          <input className="form-text" value={this.state.criteria} onChange={this.handleCriteriaChange} />
-          <div>
-            <input className="form-submit" type="submit" value="Submit" />
-          </div>
-        </form>
+        <section className={this.state.criteriaFormState ? null : "hidden"} >
+            <form onSubmit={this.handleSubmit}>
+              <h1 className="title-text">Add criteria to {this.props.selectedGame.title}</h1>
+              <input className="form-text" value={this.state.criteria} onChange={this.handleCriteriaChange} />
+                <input className="form-submit" type="submit" value="Submit" />
+            </form>
+            <button className="remove-criteria-button" onClick={() => {this.toggleCriteriaFormClass(); this.props.triggerPredictionForm()}}>Done adding Criteria?</button>
+        </section>
       </>
     )
   }

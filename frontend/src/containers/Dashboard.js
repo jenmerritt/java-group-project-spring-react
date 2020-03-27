@@ -43,8 +43,6 @@ class Dashboard extends Component {
   }
 
   handleGameSubmit(submittedGame) {
-    console.log(submittedGame);
-
     fetch('http://localhost:8080/games', {
       method: 'POST',
       headers: {
@@ -52,7 +50,8 @@ class Dashboard extends Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        title: submittedGame.title
+        title: submittedGame.title,
+        criterias: []
       })
     })
     .then(res => res.json())
@@ -61,7 +60,8 @@ class Dashboard extends Component {
           this.setState({
             games: updatedGames
           });
-        })
+        }
+        )
   }
 
   render() {

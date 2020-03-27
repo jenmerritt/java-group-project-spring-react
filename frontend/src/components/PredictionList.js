@@ -17,6 +17,7 @@ function PredictionList(criteriaId) {
     }
   });
 
+
       return (
         <>
           <section className="prediction-list">

@@ -109,9 +109,8 @@ class AddPredictionForm extends Component {
       }
 
     render(){
-
+      if(this.props.selectedGame.hasOwnProperty('criterias')){
         return(
-
             <>
               <button className="add-prediction-button" onClick={() => {this.toggleFriendFormClass(); this.fetchPredictions()}}>Add Predictions</button>
               <section className={this.state.friendFormState ? null : "hidden"}>
@@ -135,8 +134,10 @@ class AddPredictionForm extends Component {
               <button className="add-prediction-button" onClick={this.togglePredictionFormClass}>close</button>
               </section> 
             </>
-
-            )
+            )}
+      return(
+        null
+      )
   }
 }
 
