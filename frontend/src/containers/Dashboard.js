@@ -9,10 +9,13 @@ class Dashboard extends Component {
   constructor(props){
     super(props);
     this.state = {
-      games:  []
+      games:  [],
+      selectedGame: null
     }
     this.handleGameSubmit = this.handleGameSubmit.bind(this);
     this.handleDeleteGame = this.handleDeleteGame.bind(this);
+    this.resetSelectedGame = this.resetSelectedGame.bind(this);
+    this.setSelectedGame = this.setSelectedGame.bind(this)
   }
 
   handleDeleteGame(deletedGameId) {
@@ -27,9 +30,20 @@ class Dashboard extends Component {
         })
       }).then(() => {
             const newGameArray = this.state.games.filter(game => game.id !== deletedGameId)
-            this.setState({games: newGameArray})
+            this.setState({
+              games: newGameArray,
+              selectedGame: null
+            })
            })
      }
+
+  resetSelectedGame(){
+    this.setState({selectedGame: null})
+  }
+
+  setSelectedGame(game){
+    this.setState({selectedGame: game})
+  }
 
 
   componentDidMount(){
@@ -40,6 +54,10 @@ class Dashboard extends Component {
       .then(games => this.setState({ games: games._embedded.games }))
       .catch(err => console.error);
 
+  }
+
+  componentWillUnmount(){
+    this.resetSelectedGame();
   }
 
   handleGameSubmit(submittedGame) {
@@ -59,7 +77,7 @@ class Dashboard extends Component {
           const updatedGames = [...this.state.games, game];
           this.setState({
             games: updatedGames
-          });
+          })
         }
         )
   }
@@ -68,7 +86,7 @@ class Dashboard extends Component {
     return(
         <Router>
           <React.Fragment>
-          <NavBar/>
+          <NavBar resetSelectedGame={this.resetSelectedGame}/>
           <section id="dashboard">
               <Route
               path="/add-game"
@@ -78,8 +96,8 @@ class Dashboard extends Component {
               <Route
               exact
               path="/"
-              render={() => <GameList games={this.state.games} onGameSelect={this.handleSelectedGame} onGameDelete={this.handleDeleteGame}
-              onCriteriaSubmit={this.handleCriteriaSubmit} />}
+              render={() => <GameList games={this.state.games} selectedGame={this.state.selectedGame} onGameSelect={this.handleSelectedGame} onGameDelete={this.handleDeleteGame}
+              onCriteriaSubmit={this.handleCriteriaSubmit} resetSelectedGame={this.resetSelectedGame} setSelectedGame={this.setSelectedGame} />}
               />
           </section>
           </React.Fragment>

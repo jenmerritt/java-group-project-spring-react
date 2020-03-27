@@ -13,7 +13,6 @@ class GameList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedGame: null,
       createdFriend: null,
       createdFriendName: null,
       displayPredictionForm: false,
@@ -24,17 +23,20 @@ class GameList extends Component {
     this.handleFriendSubmit = this.handleFriendSubmit.bind(this);
     this.handlePredictionSubmit = this.handlePredictionSubmit.bind(this);
     this.triggerPredictionForm = this.triggerPredictionForm.bind(this);
+    this.resetGameSelectionForm = this.resetGameSelectionForm.bind(this);
   }
 
   handleSelectGame(event) {
     const selectedGame = this.props.games.find(game => {
-      return game.id == event.target.value
-    })
-    this.setState({
-      selectedGame: selectedGame
-    })
+      return game.id == event.target.value})
+    fetch(`http://localhost:8080/games/${selectedGame.id}`)
+    .then(res => res.json())
+    .then(gameFetched => this.props.setSelectedGame(gameFetched))
+    .catch(err => console.error)
+    }
 
-
+  resetGameSelectionForm(){
+    document.getElementById("game-selector-form").reset();
   }
 
   handleCriteriaSubmit(submittedCriteria) {
@@ -47,16 +49,12 @@ class GameList extends Component {
       },
       body: JSON.stringify({
         title: submittedCriteria.title,
-      game: `http://localhost:8080/games/${this.state.selectedGame.id}`,
+      game: `http://localhost:8080/games/${this.props.selectedGame.id}`,
         result: ""
       })
     })
       .then(res => res.json())
-      .then(criteria => {
-        this.setState({
-          selectedGame: criteria._embedded.game
-        })
-      });
+      .then(criteria => console.log(criteria))
   }
 
   handleFriendSubmit(submittedFriend) {
@@ -109,25 +107,27 @@ class GameList extends Component {
       return (
         <>
           <section id="game-list-wrapper">
+            <form id="game-selector-form">
               <select className="game-list" onChange={this.handleSelectGame} >
                 <option disabled default selected>Select a Game</option>
                 {this.props.games.map(game => {
                   return <option value={game.id} key={game.id} >{game.title}</option>
                 })}
               </select>
+            </form>
           </section>
           <hr/>
-          <CriteriaList selectedGame={this.state.selectedGame} />
+          <CriteriaList selectedGame={this.props.selectedGame} />
           
 
-        {this.state.selectedGame && this.state.displayCriteriaForm ? <AddCriteriaForm selectedGame={this.state.selectedGame}
+        {this.props.selectedGame && this.state.displayCriteriaForm ? <AddCriteriaForm selectedGame={this.props.selectedGame}
             onCriteriaSubmit={this.handleCriteriaSubmit} triggerPredictionForm={this.triggerPredictionForm} /> : null}
 
-        { this.state.displayPredictionForm ? <AddPredictionForm selectedGame={this.state.selectedGame}
-        createdFriendName={this.state.createdFriendName} onPredictionSubmit={this.handlePredictionSubmit} selectedGame={this.state.selectedGame}
+        { this.state.displayPredictionForm ? <AddPredictionForm selectedGame={this.props.selectedGame}
+        createdFriendName={this.state.createdFriendName} onPredictionSubmit={this.handlePredictionSubmit}
         onFriendSubmit={this.handleFriendSubmit} /> : null }
 
-        <DeleteGame selectedGame={this.state.selectedGame} onGameDelete={this.props.onGameDelete} />
+        <DeleteGame selectedGame={this.props.selectedGame} onGameDelete={this.props.onGameDelete} resetGameSelectionForm={this.resetGameSelectionForm} />
         </>
       )
   }

@@ -32,8 +32,6 @@ class GameForm extends Component {
     this.setState({ title: event.target.value })
   }
 
-
-
   render() {
       return (
         <>

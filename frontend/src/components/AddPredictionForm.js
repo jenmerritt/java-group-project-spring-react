@@ -109,6 +109,7 @@ class AddPredictionForm extends Component {
       }
 
     render(){
+      if(this.props.selectedGame != null){
       if(this.props.selectedGame.hasOwnProperty('criterias')){
         return(
             <>
@@ -134,7 +135,7 @@ class AddPredictionForm extends Component {
               <button className="add-prediction-button" onClick={this.togglePredictionFormClass}>close</button>
               </section> 
             </>
-            )}
+            )}}
       return(
         null
       )

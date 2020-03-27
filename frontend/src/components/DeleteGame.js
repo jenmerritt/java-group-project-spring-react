@@ -11,7 +11,7 @@ function deleteGame(event) {
 if(props.selectedGame != null){
 return (
 <form onSubmit={deleteGame}>
-<input type="submit" value="Delete Game" className="delete" />
+<input type="submit" value="Delete Game" className="delete" onClick={props.resetGameSelectionForm} />
 </form>
 )} return null
 

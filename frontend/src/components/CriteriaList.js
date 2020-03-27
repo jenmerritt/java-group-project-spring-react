@@ -4,13 +4,13 @@ import PredictionList from './PredictionList.js';
 
 function CriteriaList({ selectedGame }) {
 
-  if (selectedGame != null && selectedGame.hasOwnProperty('criterias')) {
+  if (selectedGame != null && selectedGame.hasOwnProperty('_embedded')) {
 
     return (
       <>
         <h1 className="game-title">{selectedGame.title}</h1>
         <section className="criteria-list">
-          {selectedGame.criterias.map(criteria => {
+          {selectedGame._embedded.criterias.map(criteria => {
             return(
                   <section className="individual-criteria">
                     <article className="criteria-title">
