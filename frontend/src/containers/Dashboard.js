@@ -4,6 +4,7 @@ import LeaderboardDetail from '../components/LeaderboardDetail';
 import LeaderboardList from '../components/LeaderboardList';
 import AddLeaderboard from '../components/AddLeaderboard';
 import {BrowserRouter as Router, Route} from "react-router-dom";
+import LeaderboardPlayersForm from '../components/LeaderboardPlayersForm';
 
 class Dashboard extends Component {
     constructor(props){
@@ -45,8 +46,9 @@ class Dashboard extends Component {
                 this.setState({
                     leaderboards: updatedLeaderboards
                 });
+                return leaderboard;
                 }
-            )
+            ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/add-players`)
     }
 
     render(){
@@ -68,6 +70,11 @@ class Dashboard extends Component {
                                 exact
                                 path="/leaderboards/:id"
                                 render={(props)=> <LeaderboardDetail id={props.match.params.id}/>} 
+                            />
+                            <Route
+                                exact
+                                path="/leaderboards/:id/add-players"
+                                render={(props)=> <LeaderboardPlayersForm id={props.match.params.id}/>} 
                             />
                             <Route
                                 exact
