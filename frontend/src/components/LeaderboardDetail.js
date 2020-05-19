@@ -35,6 +35,7 @@ class LeaderboardDetail extends Component {
                     </> 
                     : null
                 }
+                <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button>Add Player</button></a>
             </>
         );
     }

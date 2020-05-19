@@ -5,6 +5,7 @@ import LeaderboardList from '../components/LeaderboardList';
 import AddLeaderboard from '../components/AddLeaderboard';
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import LeaderboardAddPlayersForm from '../components/LeaderboardAddPlayersForm';
+import NavBar from '../components/NavBar';
 
 class Dashboard extends Component {
     constructor(props){
@@ -13,7 +14,8 @@ class Dashboard extends Component {
             leaderboards: []
         }
         this.fetchLeaderboards = this.fetchLeaderboards.bind(this);  
-        this.handleLeaderboardSubmit = this.handleLeaderboardSubmit.bind(this);  
+        this.handleLeaderboardSubmit = this.handleLeaderboardSubmit.bind(this);
+        this.handlePlayerSubmit = this.handlePlayerSubmit.bind(this);  
     }
     
     componentDidMount(){
@@ -48,7 +50,7 @@ class Dashboard extends Component {
                 });
                 return leaderboard;
                 }
-            ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/add-players`)
+            ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/add-player`)
     }
 
     handlePlayerSubmit(submittedPlayer){
@@ -62,6 +64,14 @@ class Dashboard extends Component {
                 name: submittedPlayer.name,
                 leaderboard: submittedPlayer.leaderboard
             })
+            }).then(response => {
+                if(response.ok){
+                    alert(submittedPlayer.name + " saved! Go ahead and add another player!")
+                } else {
+                    alert("Sorry something went wrong, please try again.")
+                    throw new Error('Something went wrong')   
+            }}).catch(error => {
+                console.log(error)
             })
     }
 
@@ -73,21 +83,22 @@ class Dashboard extends Component {
                             <Route
                                 exact
                                 path="/leaderboards"
-                                render={() => <LeaderboardList leaderboards={this.state.leaderboards} />}
+                                render={() => <><NavBar /> <LeaderboardList leaderboards={this.state.leaderboards} /></>}
                             />
                             <Route
                                 exact
-                                path="/leaderboards/new"
+                                strict
+                                path="/new-leaderboard"
                                 render={() => <AddLeaderboard onLeaderboardSubmit={this.handleLeaderboardSubmit} />}
                             />
                             <Route
                                 exact
                                 path="/leaderboards/:id"
-                                render={(props)=> <LeaderboardDetail id={props.match.params.id}/>} 
+                                render={(props)=> <><NavBar /><LeaderboardDetail id={props.match.params.id}/> </>} 
                             />
                             <Route
                                 exact
-                                path="/leaderboards/:id/add-players"
+                                path="/leaderboards/:id/add-player"
                                 render={(props)=> <LeaderboardAddPlayersForm id={props.match.params.id} onPlayerSubmit={this.handlePlayerSubmit}/>} 
                             />
                             <Route

@@ -27,10 +27,12 @@ function LeaderboardAddPlayersForm(props) {
 
   return (
     <>
-        <form onSubmit={handleSubmit}>
-          <input value={name} onChange={handleNameChange} />
-          <input type="submit" value="Submit" />
-        </form>
+            <h1>Add a Player</h1>
+            <form onSubmit={handleSubmit}>
+              <input value={name} onChange={handleNameChange} />
+              <input type="submit" value="Submit" />
+            </form>
+            <a href={`/leaderboards/${props.id}`}><p>Go to Leaderboard</p></a>
     </>
   );
 }

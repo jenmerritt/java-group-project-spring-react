@@ -10,7 +10,7 @@ function LeaderboardList({leaderboards}) {
             )
         }) }
       </div>
-      <button>Create Leaderboard</button>
+      <a href={`/new-leaderboard`}><button>Create Leaderboard</button></a>
     </>
   );
 }
