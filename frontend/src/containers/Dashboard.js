@@ -4,7 +4,7 @@ import LeaderboardDetail from '../components/LeaderboardDetail';
 import LeaderboardList from '../components/LeaderboardList';
 import AddLeaderboard from '../components/AddLeaderboard';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import LeaderboardPlayersForm from '../components/LeaderboardPlayersForm';
+import LeaderboardAddPlayersForm from '../components/LeaderboardAddPlayersForm';
 
 class Dashboard extends Component {
     constructor(props){
@@ -51,6 +51,20 @@ class Dashboard extends Component {
             ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/add-players`)
     }
 
+    handlePlayerSubmit(submittedPlayer){
+        fetch('http://localhost:8080/players', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                name: submittedPlayer.name,
+                leaderboard: submittedPlayer.leaderboard
+            })
+            })
+    }
+
     render(){
             return (
                 <>
@@ -74,7 +88,7 @@ class Dashboard extends Component {
                             <Route
                                 exact
                                 path="/leaderboards/:id/add-players"
-                                render={(props)=> <LeaderboardPlayersForm id={props.match.params.id}/>} 
+                                render={(props)=> <LeaderboardAddPlayersForm id={props.match.params.id} onPlayerSubmit={this.handlePlayerSubmit}/>} 
                             />
                             <Route
                                 exact

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-function LeaderboardPlayersForm(props) {
+function LeaderboardAddPlayersForm(props) {
 
   const [name, setName] = useState("")
 
@@ -17,7 +17,8 @@ function LeaderboardPlayersForm(props) {
     }
 
     props.onPlayerSubmit({
-      name: nameToSubmit
+      name: nameToSubmit,
+      leaderboard: `http://localhost:8080/leaderboards/${props.id}`
     })
 
     setName("")
@@ -26,12 +27,12 @@ function LeaderboardPlayersForm(props) {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input value={name} onChange={handleNameChange} />
           <input type="submit" value="Submit" />
-      </form>
+        </form>
     </>
   );
 }
 
-export default LeaderboardPlayersForm;
+export default LeaderboardAddPlayersForm;
