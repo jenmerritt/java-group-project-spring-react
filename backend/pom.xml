@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.codeclan.example</groupId>
-	<artifactId>GuessWithFriends</artifactId>
+	<artifactId>HowManyPoints</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>GuessWithFriends</name>
+	<name>HowManyPoints</name>
 	<description></description>
 
 	<properties>

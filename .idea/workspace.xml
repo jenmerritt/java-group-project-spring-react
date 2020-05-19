@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f87c0e43-53e5-4f25-ad36-ed0782b56eac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/controllers/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/models/Leaderboard.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/projections/EmbedLeague.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/projections/EmbedPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/repositories/LeagueRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/repositories/PlayerRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/repositories/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/GuessWithFriends.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/HowManyPoints.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/components/DataLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/components/DataLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/config/SpringGlobalConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/config/SpringGlobalConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/controllers/CriteriaController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/controllers/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/controllers/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/controllers/LeagueController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/controllers/PredictionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/models/Criteria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/models/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/ChampionshipManager/models/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/models/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/models/Prediction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/projections/EmbedCriteria.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/projections/EmbedFriend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/projections/EmbedPrediction.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/repositories/CriteriaRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/repositories/FriendRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/repositories/GameRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/codeclan/example/GuessWithFriends/repositories/PredictionRepo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/test/java/com/codeclan/example/GuessWithFriends/GuessWithFriendsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/test/java/com/codeclan/example/ChampionshipManager/ChampionshipManagerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/logo192.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/logo192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/public/logo512.png" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/public/logo512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddCriteriaForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddFriendForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/AddPredictionForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/CriteriaList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/DeleteGame.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/GameForm.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/GameList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/NavBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/NavBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/PredictionList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/AddCriteriaForm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/AddPredictionForm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/CriteriaList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/FriendForm.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/GameList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/NavBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/styles/NavBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/components/styles/PredictionList.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Dashboard.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/containers/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/containers/Dashboard.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="alwaysUpdateSnapshots" value="true" />
+      </MavenGeneralSettings>
+    </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1c7Xuo8fePG5GeNyK9OESJKrubs" />
+  <component name="PropertiesComponent">
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.19310345" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f87c0e43-53e5-4f25-ad36-ed0782b56eac" name="Default Changelist" comment="" />
+      <created>1589880830971</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589880830971</updated>
+    </task>
+    <servers />
+  </component>
+</project>
