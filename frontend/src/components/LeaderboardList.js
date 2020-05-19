@@ -1,9 +1,13 @@
 import React from 'react';
 
-function LeaderboardList(props) {
+function LeaderboardList({leaderboards}) {
   return (
     <div>
-      <p>Leaderboard List.</p>
+      { leaderboards.map(leaderboard => {
+          return(
+              <a key={leaderboard.id} href={'/leaderboards/' + leaderboard.id}><p>{leaderboard.title}</p></a>
+          )
+      }) }
     </div>
   );
 }
