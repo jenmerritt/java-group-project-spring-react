@@ -1,16 +1,53 @@
 import React, {Component} from 'react';
 import LandingPage from '../components/LandingPage';
-import Leaderboards from './Leaderboards';
 import LeaderboardDetail from '../components/LeaderboardDetail';
-import {BrowserRouter as Router, Route } from "react-router-dom";
+import LeaderboardList from '../components/LeaderboardList';
+import AddLeaderboard from '../components/AddLeaderboard';
+import {BrowserRouter as Router, Route} from "react-router-dom";
 
 class Dashboard extends Component {
     constructor(props){
         super(props);
         this.state = {
+            leaderboards: []
         }
-      }
+        this.fetchLeaderboards = this.fetchLeaderboards.bind(this);  
+        this.handleLeaderboardSubmit = this.handleLeaderboardSubmit.bind(this);  
+    }
+    
+    componentDidMount(){
+        this.fetchLeaderboards();
+    }
 
+    fetchLeaderboards(){
+        const url = 'http://localhost:8080/leaderboards'
+
+        fetch(url)
+        .then(res => res.json())
+        .then(leaderboards => this.setState({ leaderboards: leaderboards._embedded.leaderboards }))
+        .catch(err => console.error);
+    }
+
+    handleLeaderboardSubmit(submittedLeaderboard){
+        fetch('http://localhost:8080/leaderboards', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                title: submittedLeaderboard.title
+            })
+            })
+            .then(res => res.json())
+            .then(leaderboard =>{
+                const updatedLeaderboards = [...this.state.leaderboards, leaderboard];
+                this.setState({
+                    leaderboards: updatedLeaderboards
+                });
+                }
+            )
+    }
 
     render(){
             return (
@@ -20,7 +57,12 @@ class Dashboard extends Component {
                             <Route
                                 exact
                                 path="/leaderboards"
-                                render={() => <Leaderboards />}
+                                render={() => <LeaderboardList leaderboards={this.state.leaderboards} />}
+                            />
+                            <Route
+                                exact
+                                path="/leaderboards/new"
+                                render={() => <AddLeaderboard onLeaderboardSubmit={this.handleLeaderboardSubmit} />}
                             />
                             <Route
                                 exact

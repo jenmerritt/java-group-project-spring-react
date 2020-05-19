@@ -25,6 +25,16 @@ class LeaderboardDetail extends Component {
             return (
             <>
                 <p>{this.state.leaderboard.title}</p>
+                { this.state.leaderboard._embedded ? 
+                    <>
+                      {this.state.leaderboard._embedded.players.map(player => {
+                        return(
+                          <p key={player.id}>{player.name} : {player.points}</p>
+                        )
+                     })}
+                    </> 
+                    : null
+                }
             </>
         );
     }
