@@ -1,17 +1,19 @@
 import React from 'react';
+import '../../App.css';
+import './styles/leaderboards.css';
 
 function LeaderboardList({leaderboards}) {
   return (
-    <>
+    <section className="section-wrap">
       <h1>Leadboards</h1>
-      <div>
+      <ul className="list">
         { leaderboards.map(leaderboard => {
             return(
-                <a key={leaderboard.id} href={'/leaderboards/' + leaderboard.id}><p>{leaderboard.title}</p></a>
+                <li className="list-item"><a key={leaderboard.id} href={'/leaderboards/' + leaderboard.id}>{leaderboard.title}</a></li>
             )
         }) }
-      </div>
-    </>
+      </ul>
+    </section>
   );
 }
 

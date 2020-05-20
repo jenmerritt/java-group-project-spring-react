@@ -4,10 +4,11 @@ import '../App.css';
 function NavBar() {
   return (
     <div id="navbar-wrap">
+        <h2>How Many Points?</h2>
         <ul id="navbar-list">
-            <a href="/"><li className="navbar-item">Home</li></a>
-            <a href="/leaderboards"><li className="navbar-item">Leaderboards</li></a>
-            <a href="/new-leaderboard"><li className="navbar-item">Create Leaderboard</li></a>
+            <li className="navbar-item"><a href="/">Home</a></li>
+            <li className="navbar-item"><a href="/leaderboards">Leaderboards</a></li>
+            <li className="navbar-item"><a href="/new-leaderboard">Create Leaderboard</a></li>
         </ul>
     </div>
   );

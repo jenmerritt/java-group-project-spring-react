@@ -1,0 +1,40 @@
+.section-wrap{
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.section-wrap h1{
+    font-size: 32px;
+    color: #0B4F6C;
+}
+
+.list{
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-item{
+    font-size: 20px;
+    margin-bottom: 20px;
+    background-color: #5C9EAD;
+    color: #ffffff;
+    width: 20%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.list-item a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.list-item a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
