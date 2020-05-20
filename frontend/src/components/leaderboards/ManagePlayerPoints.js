@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 function ManagePlayerPoints(props) {
 
@@ -13,14 +13,18 @@ function ManagePlayerPoints(props) {
   }
 
   return (
-    <>
-        <button value="1" onClick={handleClick}>+1</button>
-        <button value="10" onClick={handleClick}>+10</button>
-        <button value="50" onClick={handleClick}>+50</button>
-        <button value="-1" onClick={handleClick}>-1</button>
-        <button value="-10" onClick={handleClick}>-10</button>
-        <button value="-50" onClick={handleClick}>-50</button>
-    </>
+    <div className="player-buttons">
+      <div className="add-buttons">
+        <button className="points-button add" value="1" onClick={handleClick}>+1</button>
+        <button className="points-button add" value="10" onClick={handleClick}>+10</button>
+        <button className="points-button add" value="50" onClick={handleClick}>+50</button>
+      </div>
+      <div className="minus-buttons">
+        <button className="points-button minus" value="-1" onClick={handleClick}>-1</button>
+        <button className="points-button minus" value="-10" onClick={handleClick}>-10</button>
+        <button className="points-button minus" value="-50" onClick={handleClick}>-50</button>
+      </div>
+    </div>
   );
 }
 

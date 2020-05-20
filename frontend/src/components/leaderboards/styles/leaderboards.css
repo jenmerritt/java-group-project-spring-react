@@ -38,3 +38,67 @@
     text-decoration: underline;
 }
 
+/* Detail page */
+
+.players-list{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.player-box{
+    border: 5px solid #5C9EAD;
+    margin: 20px;
+    max-width: 300px;
+    padding: 10px;
+    min-width: 200px;
+
+}
+
+.player-position p{
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+.player-name{
+    font-size: 20px;
+}
+
+.player-points{
+    font-size: 40px;
+}
+
+.points-divider{
+    border: 3px solid #5C9EAD;
+}
+
+.points-button{
+    padding: 10px;
+    width: 50px;
+    margin: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.points-button:hover{
+    cursor: pointer;
+}
+
+.add{
+    background-color: #76B041;
+}
+
+.minus{
+    background-color: #E4572E;
+}
+
+.add-buttons{
+    margin-bottom: 20px;
+}
+
