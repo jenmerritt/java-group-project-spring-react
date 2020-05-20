@@ -7,10 +7,6 @@ function ManagePlayerPoints(props) {
     let valueOfPoints = event.target.value;
 
     let pointsToUpdate = parseInt(valueOfPoints) + parseInt(props.player.points)
-
-    if (!pointsToUpdate) {
-      return
-    }
     
     props.updatePlayerPoints(pointsToUpdate, props.player.id)
 

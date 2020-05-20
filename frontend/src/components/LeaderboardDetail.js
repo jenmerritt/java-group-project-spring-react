@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ManagePlayerPoints from './ManagePlayerPoints';
+import NavBar from './NavBar';
 
 class LeaderboardDetail extends Component {
     constructor(props){
@@ -18,7 +19,10 @@ class LeaderboardDetail extends Component {
     fetchLeaderboard(){
         fetch(`http://localhost:8080/leaderboards/${this.props.id}`)
         .then(res => res.json())
-        .then(leaderboard => this.setState({leaderboard: leaderboard}))
+        .then(leaderboard => {
+            leaderboard._embedded.players = leaderboard._embedded.players.sort((a,b) => b.points - a.points)
+            this.setState({leaderboard: leaderboard})
+        })
         .catch(err => console.error);
     }
 
