@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ManagePlayerPoints from './ManagePlayerPoints';
-import NavBar from './NavBar';
 
 class LeaderboardDetail extends Component {
     constructor(props){

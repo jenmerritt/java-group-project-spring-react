@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import LandingPage from '../components/LandingPage';
-import LeaderboardDetail from '../components/LeaderboardDetail';
-import LeaderboardList from '../components/LeaderboardList';
-import AddLeaderboard from '../components/AddLeaderboard';
+import LeaderboardDetail from '../components/leaderboards/LeaderboardDetail';
+import LeaderboardList from '../components/leaderboards/LeaderboardList';
+import AddLeaderboard from '../components/leaderboards/AddLeaderboard';
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import LeaderboardAddPlayersForm from '../components/LeaderboardAddPlayersForm';
+import LeaderboardAddPlayersForm from '../components/leaderboards/LeaderboardAddPlayersForm';
 import NavBar from '../components/NavBar';
 
 class Dashboard extends Component {

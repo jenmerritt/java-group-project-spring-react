@@ -1,5 +1,61 @@
 .App{
-	font-family: "Courier";
+	font-family: 'Red Hat Display', sans-serif;
 	width: 100%;
 	margin: 0 auto;
+	padding: 0;
+}
+
+body{
+	padding:0;
+	margin:0;
+}
+
+#copyright{
+	margin:0;
+	padding:10px;
+	text-align: center;
+	color: #ffffff;
+}
+
+#site-header{
+	font-size: 90px;
+	font-weight: 900;
+	text-align: center;
+	color: #ffffff;
+}
+
+#header-section{
+	background-color: #5C9EAD;
+	padding: 30px;
+}
+
+#landing-page-wrap{
+	width:100%;
+	background-color: #0B4F6C;
+	padding: 0;
+	margin: 0;
+}
+
+.article-wrap{
+	padding: 80px;
+	margin: 0 auto;
+	text-align: center;
+	color: #ffffff;
+}
+
+.article-wrap p{
+	font-size: 24px;
+}
+
+.large-button{
+	width: 50%;
+	padding: 30px;
+	font-size: 30px;
+	font-family: 'Red Hat Display', sans-serif;
+	margin: 20px;
+}
+
+.large-button:hover{
+	cursor: pointer;
+	text-decoration: underline;
 }
