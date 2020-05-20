@@ -3,6 +3,7 @@ import React from 'react';
 function LeaderboardList({leaderboards}) {
   return (
     <>
+      <h1>Leadboards</h1>
       <div>
         { leaderboards.map(leaderboard => {
             return(
@@ -10,7 +11,6 @@ function LeaderboardList({leaderboards}) {
             )
         }) }
       </div>
-      <a href={`/new-leaderboard`}><button>Create Leaderboard</button></a>
     </>
   );
 }
