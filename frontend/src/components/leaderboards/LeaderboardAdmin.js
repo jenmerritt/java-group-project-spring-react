@@ -6,13 +6,15 @@ import './styles/leaderboards.css';
 import '../../App.css';
 import NotFound from '../NotFound';
 
-class LeaderboardDetail extends Component {
+class LeaderboardAdmin extends Component {
     constructor(props){
         super(props);
         this.state = {
             leaderboard: {}
         }
         this.fetchLeaderboard = this.fetchLeaderboard.bind(this);    
+        this.updatePlayerPoints = this.updatePlayerPoints.bind(this);
+        this.handleDeletePlayer = this.handleDeletePlayer.bind(this);
     }
     
     componentDidMount(){
@@ -31,10 +33,38 @@ class LeaderboardDetail extends Component {
         .catch(err => console.error);
     }
 
+    updatePlayerPoints(pointsToUpdate, playerId){
+        fetch(`http://localhost:8080/players/${playerId}`, {
+            method: 'PATCH',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                points: pointsToUpdate
+            })})
+        .then(() => this.fetchLeaderboard())
+        .catch(error => {
+                console.log(error)
+            })
+    }
+
+    handleDeletePlayer(playerId){
+
+        fetch(`http://localhost:8080/players/${playerId}`, {
+            method: 'DELETE',
+        })
+        .then(() => this.fetchLeaderboard())
+        .catch(error => {
+                console.log(error)
+            })
+    }
 
     render(){
-            return (
+        return (
             <section className="section-wrap">
+                { this.state.leaderboard.adminUrl === this.props.adminUrl ?
+                <>
                 <h1>{this.state.leaderboard.title}</h1>
                 { this.state.leaderboard._embedded ? 
                     <>
@@ -54,6 +84,12 @@ class LeaderboardDetail extends Component {
                                 <div className="player-points">
                                     <p>{player.points}</p>
                                 </div>
+                                <div>
+                                    <hr className="points-divider"/>
+                                </div>
+                                <ManagePlayerPoints player={player} leaderboard={this.state.leaderboard} updatePlayerPoints={this.updatePlayerPoints} />
+                                    <hr className="points-divider"/>
+                                <DeletePlayer playerId={player.id} handleDeletePlayer={this.handleDeletePlayer} />
                             </article>
                             )
                         })}
@@ -62,13 +98,17 @@ class LeaderboardDetail extends Component {
                     : null
                 }
                 { this.state.leaderboard.id == this.props.id ? 
-                    null
+                    <div className="button-wrap">
+                        <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button mr">Add Player</button></a>
+                        <DeleteLeaderboard leaderboardId={this.state.leaderboard.id} />
+                    </div>
                     :
                     <NotFound />
                 }
+            </> : <NotFound /> }
             </section>
-        );
+        )
     }
 }
 
-export default LeaderboardDetail;
+export default LeaderboardAdmin;

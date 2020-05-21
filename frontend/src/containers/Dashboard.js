@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import LandingPage from '../components/LandingPage';
 import LeaderboardDetail from '../components/leaderboards/LeaderboardDetail';
+import LeaderboardAdmin from '../components/leaderboards/LeaderboardAdmin';
 import LeaderboardList from '../components/leaderboards/LeaderboardList';
 import AddLeaderboard from '../components/leaderboards/AddLeaderboard';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -97,8 +98,13 @@ class Dashboard extends Component {
                             />
                             <Route
                                 exact
+                                path="/leaderboards/:id/:adminUrl"
+                                render={(props)=> <><NavBar /><LeaderboardAdmin id={props.match.params.id} adminUrl={props.match.params.adminUrl} /> </>} 
+                            />
+                            <Route
+                                exact
                                 path="/leaderboards/:id"
-                                render={(props)=> <><NavBar /><LeaderboardDetail id={props.match.params.id}/> </>} 
+                                render={(props)=> <><NavBar /><LeaderboardDetail id={props.match.params.id} /> </>} 
                             />
                             <Route
                                 exact
