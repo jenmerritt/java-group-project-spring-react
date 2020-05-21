@@ -55,7 +55,7 @@ class Dashboard extends Component {
                 });
                 return leaderboard;
                 }
-            ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/add-player`)
+            ).then((leaderboard) => window.location.href=`/leaderboards/${leaderboard.id}/admin/${leaderboard.adminUrl}`)
     }
 
     handlePlayerSubmit(submittedPlayer){
@@ -98,7 +98,7 @@ class Dashboard extends Component {
                             />
                             <Route
                                 exact
-                                path="/leaderboards/:id/:adminUrl"
+                                path="/leaderboards/:id/admin/:adminUrl"
                                 render={(props)=> <><NavBar /><LeaderboardAdmin id={props.match.params.id} adminUrl={props.match.params.adminUrl} /> </>} 
                             />
                             <Route

@@ -10,7 +10,8 @@ class LeaderboardAdmin extends Component {
     constructor(props){
         super(props);
         this.state = {
-            leaderboard: {}
+            leaderboard: {},
+            messageDismissed: false
         }
         this.fetchLeaderboard = this.fetchLeaderboard.bind(this);    
         this.updatePlayerPoints = this.updatePlayerPoints.bind(this);
@@ -66,6 +67,15 @@ class LeaderboardAdmin extends Component {
                 { this.state.leaderboard.adminUrl === this.props.adminUrl ?
                 <>
                 <h1>{this.state.leaderboard.title}</h1>
+                { !this.state.messageDismissed ?
+                <div className="message-box">
+                    {/* <h2>IMPORTANT</h2> */}
+                    <p>This is your unique admin page.</p>
+                    <p>Make sure you bookmark it as there is no way to retrieve the web address if you forget!</p>
+                    <p onClick={() => this.setState({messageDismissed: true})} className="dismiss-message">Dismiss Message</p>
+                </div>
+                : null
+                }
                 { this.state.leaderboard._embedded ? 
                     <>
                         <section className="players-list">
