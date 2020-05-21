@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ManagePlayerPoints from './ManagePlayerPoints';
+import DeleteLeaderboard from './DeleteLeaderboard';
 import './styles/leaderboards.css';
 import '../../App.css';
 import NotFound from '../NotFound';
@@ -52,7 +53,10 @@ class LeaderboardDetail extends Component {
             <section className="section-wrap">
                 <h1>{this.state.leaderboard.title}</h1>
                 { this.state.leaderboard.id == this.props.id ? 
-                    <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button">Add Player</button></a>
+                    <>
+                        <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button">Add Player</button></a>
+                        <DeleteLeaderboard leaderboardId={this.state.leaderboard.id} />
+                    </>
                     :
                     <NotFound />
                 }
