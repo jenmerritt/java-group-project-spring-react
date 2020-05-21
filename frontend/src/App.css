@@ -9,26 +9,6 @@ body{
 	padding:0;
 	margin:0;
 }
-
-.section-wrap{
-	width: 100%;
-	margin: 0;
-	padding: 0;
-	text-align: center;
-}
-
-.section-wrap h1{
-	font-size: 32px;
-}
-
-.list{
-
-}
-
-.list-item{
-	
-}
-
 /* Landing Page */
 
 #copyright{

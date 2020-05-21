@@ -1,4 +1,7 @@
 import React, {useState} from 'react';
+import './styles/forms.css';
+import './styles/leaderboards.css';
+import '../../App.css';
 
 function LeaderboardAddPlayersForm(props) {
 
@@ -26,14 +29,18 @@ function LeaderboardAddPlayersForm(props) {
   }
 
   return (
-    <>
+    <section className="section-wrap">
             <h1>Add a Player</h1>
             <form onSubmit={handleSubmit}>
-              <input value={name} onChange={handleNameChange} />
-              <input type="submit" value="Submit" />
+              <input type="text" value={name} onChange={handleNameChange} />
+              <input className="submit-button" type="submit" value="Submit" />
             </form>
-            <a href={`/leaderboards/${props.id}`}><p>Go to Leaderboard</p></a>
-    </>
+            <hr className="full-width-spacer" />
+            <div className="spacing-wrapper">
+              <p>Finished adding players?</p>
+              <a href={`/leaderboards/${props.id}`}><button className="standard-button">Go to Leaderboard</button></a>
+            </div>
+    </section>
   );
 }
 

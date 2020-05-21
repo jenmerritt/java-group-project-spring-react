@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -12,7 +13,10 @@ public class Leaderboard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    private String adminUrl;
 
     @Column(name="title")
     private String title;
@@ -23,6 +27,7 @@ public class Leaderboard {
 
     public Leaderboard(String title) {
         this.id = id;
+        this.adminUrl = Long.toString(new Date().getTime()) + "a";
         this.title = title;
         this.players = new ArrayList<Player>();
     }
@@ -36,6 +41,14 @@ public class Leaderboard {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getAdminUrl() {
+        return adminUrl;
+    }
+
+    public void setAdminUrl(String adminUrl) {
+        this.adminUrl = adminUrl;
     }
 
     public String getTitle() {

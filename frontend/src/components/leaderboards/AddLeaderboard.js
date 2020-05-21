@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import './styles/leaderboards.css';
+import './styles/forms.css';
 
 function AddLeaderboard(props) {
 
@@ -25,13 +27,13 @@ function AddLeaderboard(props) {
   }
 
   return (
-    <>
+    <section className="section-wrap">
       <h1>Add Leaderboard</h1>
       <form onSubmit={handleSubmit}>
-          <input value={title} onChange={handleTitleChange} />
-          <input type="submit" value="Submit" />
+          <input type="text" value={title} onChange={handleTitleChange} />
+          <input className="submit-button" type="submit" value="Submit" />
       </form>
-    </>
+    </section >
   );
 }
 

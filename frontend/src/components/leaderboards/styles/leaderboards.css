@@ -6,8 +6,24 @@
 }
 
 .section-wrap h1{
-    font-size: 32px;
+    font-size: 36px;
     color: #0B4F6C;
+    margin: 20px;
+    padding: 0;
+}
+
+.standard-button{
+    padding: 15px;
+    font-size: 20px;
+    color: #ffffff;
+    background-color:  #5C9EAD;
+    border: none;
+}
+
+.standard-button:hover{
+    cursor: pointer;
+    background-color: #0B4F6C;
+    border: none;
 }
 
 .list{
@@ -36,6 +52,16 @@
 .list-item a:hover{
     cursor: pointer;
     text-decoration: underline;
+}
+
+.spacing-wrapper{
+    margin: 50px;
+}
+
+.full-width-spacer{
+    border: 2px solid #5C9EAD;
+    width: 50%;
+    margin-top: 50px;
 }
 
 /* Detail page */

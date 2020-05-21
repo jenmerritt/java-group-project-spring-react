@@ -3,8 +3,9 @@ import LandingPage from '../components/LandingPage';
 import LeaderboardDetail from '../components/leaderboards/LeaderboardDetail';
 import LeaderboardList from '../components/leaderboards/LeaderboardList';
 import AddLeaderboard from '../components/leaderboards/AddLeaderboard';
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LeaderboardAddPlayersForm from '../components/leaderboards/LeaderboardAddPlayersForm';
+import NotFound from '../components/NotFound';
 import NavBar from '../components/NavBar';
 
 class Dashboard extends Component {
@@ -79,7 +80,7 @@ class Dashboard extends Component {
             return (
                 <>
                     <Router>
-                        <React.Fragment>
+                        <Switch>
                             <Route
                                 exact
                                 path="/leaderboards"
@@ -89,7 +90,7 @@ class Dashboard extends Component {
                                 exact
                                 strict
                                 path="/new-leaderboard"
-                                render={() => <AddLeaderboard onLeaderboardSubmit={this.handleLeaderboardSubmit} />}
+                                render={() => <><NavBar /> <AddLeaderboard onLeaderboardSubmit={this.handleLeaderboardSubmit} /></>}
                             />
                             <Route
                                 exact
@@ -106,7 +107,10 @@ class Dashboard extends Component {
                                 path="/"
                                 render={() => <LandingPage />}
                             />
-                        </React.Fragment>
+                            <Route
+                                render={() => <><NavBar /><NotFound /></>}
+                            />
+                        </Switch>
                     </Router>
             </>
         );
