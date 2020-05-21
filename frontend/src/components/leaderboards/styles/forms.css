@@ -5,13 +5,21 @@ form{
 }
 
 input[type=text]{
-    width: 20%;
+    min-width: 300px;
     font-size: 20px;
-    margin: 0;
-    margin-right: 20px;
+    margin: 0px 20px 20px 0px;
     height: 50px;
     padding: 0px 10px 0px 10px;
     border: 2px solid grey;
+}
+
+input[type=checkbox]{
+    -ms-transform: scale(2);
+    -moz-transform: scale(2);
+    -webkit-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2);
+    margin: 0 0 40px 20px;
 }
 
 .submit-button{

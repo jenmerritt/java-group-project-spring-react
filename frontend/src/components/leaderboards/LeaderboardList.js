@@ -8,9 +8,10 @@ function LeaderboardList({leaderboards}) {
       <h1>Leadboards</h1>
       <ul className="list">
         { leaderboards.map(leaderboard => {
+          if(!leaderboard.hidden){
             return(
                 <li className="list-item"><a key={leaderboard.id} href={'/leaderboards/' + leaderboard.id}>{leaderboard.title}</a></li>
-            )
+            )}
         }) }
       </ul>
     </section>

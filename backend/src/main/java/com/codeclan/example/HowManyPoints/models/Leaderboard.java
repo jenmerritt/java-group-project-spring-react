@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -16,8 +15,6 @@ public class Leaderboard {
     @Column(name = "id")
     private Long id;
 
-    private String adminUrl;
-
     @Column(name="title")
     private String title;
 
@@ -25,11 +22,17 @@ public class Leaderboard {
     @OneToMany(mappedBy = "leaderboard", cascade = CascadeType.REMOVE)
     private List<Player> players;
 
-    public Leaderboard(String title) {
+    private String adminUrl;
+
+    @Column(name="isHidden")
+    private boolean isHidden;
+
+    public Leaderboard(String title, String adminUrl, boolean isHidden) {
         this.id = id;
-        this.adminUrl = Long.toString(new Date().getTime()) + "a";
         this.title = title;
         this.players = new ArrayList<Player>();
+        this.adminUrl = adminUrl;
+        this.isHidden = isHidden;
     }
 
     public Leaderboard() {
@@ -65,5 +68,13 @@ public class Leaderboard {
 
     public void setPlayers(List<Player> players) {
         this.players = players;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setIsHidden(boolean isHidden) {
+        this.isHidden = isHidden;
     }
 }

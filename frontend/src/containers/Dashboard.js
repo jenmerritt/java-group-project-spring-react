@@ -40,11 +40,14 @@ class Dashboard extends Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                title: submittedLeaderboard.title
+                title: submittedLeaderboard.title,
+                adminUrl: submittedLeaderboard.adminUrl,
+                isHidden: submittedLeaderboard.isHidden
             })
             })
             .then(res => res.json())
             .then(leaderboard =>{
+                console.log(leaderboard)
                 const updatedLeaderboards = [...this.state.leaderboards, leaderboard];
                 this.setState({
                     leaderboards: updatedLeaderboards

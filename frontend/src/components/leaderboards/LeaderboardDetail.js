@@ -21,9 +21,11 @@ class LeaderboardDetail extends Component {
     fetchLeaderboard(){
         fetch(`http://localhost:8080/leaderboards/${this.props.id}`)
         .then(res => res.json())
-        .then(leaderboard => {
-            leaderboard._embedded.players = leaderboard._embedded.players.sort((a,b) => b.points - a.points)
-            this.setState({leaderboard: leaderboard})
+        .then(fetchedLeaderboard => {
+            if(fetchedLeaderboard._embedded){
+                fetchedLeaderboard._embedded.players = fetchedLeaderboard._embedded.players.sort((a,b) => b.points - a.points)
+            }
+            this.setState({leaderboard: fetchedLeaderboard})
         })
         .catch(err => console.error);
     }
@@ -49,9 +51,13 @@ class LeaderboardDetail extends Component {
             return (
             <section className="section-wrap">
                 <h1>{this.state.leaderboard.title}</h1>
+                { this.state.leaderboard.id == this.props.id ? 
+                    <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button">Add Player</button></a>
+                    :
+                    <NotFound />
+                }
                 { this.state.leaderboard._embedded ? 
                     <>
-                        <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button">Add Player</button></a>
                         <section className="players-list">
                         {this.state.leaderboard._embedded.players.map((player, index) => {
                             return(
@@ -77,7 +83,7 @@ class LeaderboardDetail extends Component {
                         })}
                         </section> 
                     </>
-                    : <NotFound />
+                    : null
                 }
             </section>
         );
