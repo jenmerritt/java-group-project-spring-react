@@ -19,7 +19,7 @@ function DeleteLeaderboard(props) {
 
   return (
       <form onSubmit={handleDeleteLeaderboard}>
-          <input className="submit-button" type="submit" value="Delete Leaderboard" />
+          <input className="standard-button" type="submit" value="Delete Leaderboard" />
       </form>
   );
 }

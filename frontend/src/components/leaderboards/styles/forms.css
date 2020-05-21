@@ -4,6 +4,11 @@ form{
     margin-bottom: 30px;
 }
 
+#delete-form{
+    margin-top: 30px;
+    margin-bottom: 0px;
+}
+
 input[type=text]{
     min-width: 300px;
     font-size: 20px;
@@ -36,5 +41,22 @@ input[type=checkbox]{
 .submit-button:hover{
     cursor: pointer;
     background-color: #0B4F6C;
+    border: none;
+}
+
+.delete-button{
+    height: 20px;
+    min-width: 100px;
+    font-size: 14px;
+    color: #ffffff;
+    background-color: #0B4F6C;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.delete-button:hover{
+    background-color:  #5C9EAD;
+    cursor: pointer;
     border: none;
 }

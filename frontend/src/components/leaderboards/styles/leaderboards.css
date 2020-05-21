@@ -26,6 +26,10 @@
     border: none;
 }
 
+.mr{
+    margin-right: 15px;
+}
+
 .list{
     list-style-type: none;
     padding: 0;
@@ -126,5 +130,10 @@
 
 .add-buttons{
     margin-bottom: 20px;
+}
+
+.button-wrap{
+    display: flex;
+    justify-content: center;
 }
 

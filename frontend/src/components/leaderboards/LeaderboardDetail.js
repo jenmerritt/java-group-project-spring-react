@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ManagePlayerPoints from './ManagePlayerPoints';
 import DeleteLeaderboard from './DeleteLeaderboard';
+import DeletePlayer from './DeletePlayer';
 import './styles/leaderboards.css';
 import '../../App.css';
 import NotFound from '../NotFound';
@@ -13,6 +14,7 @@ class LeaderboardDetail extends Component {
         }
         this.fetchLeaderboard = this.fetchLeaderboard.bind(this);    
         this.updatePlayerPoints = this.updatePlayerPoints.bind(this);
+        this.handleDeletePlayer = this.handleDeletePlayer.bind(this);
     }
     
     componentDidMount(){
@@ -47,19 +49,22 @@ class LeaderboardDetail extends Component {
             })
     }
 
+    handleDeletePlayer(playerId){
+
+        fetch(`http://localhost:8080/players/${playerId}`, {
+            method: 'DELETE',
+        })
+        .then(() => this.fetchLeaderboard())
+        .catch(error => {
+                console.log(error)
+            })
+    }
+
 
     render(){
             return (
             <section className="section-wrap">
                 <h1>{this.state.leaderboard.title}</h1>
-                { this.state.leaderboard.id == this.props.id ? 
-                    <>
-                        <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button">Add Player</button></a>
-                        <DeleteLeaderboard leaderboardId={this.state.leaderboard.id} />
-                    </>
-                    :
-                    <NotFound />
-                }
                 { this.state.leaderboard._embedded ? 
                     <>
                         <section className="players-list">
@@ -68,7 +73,7 @@ class LeaderboardDetail extends Component {
                             <article className="player-box" key={player.id}>
                                 <div className="player-position">
                                     { index === 0 ? 
-                                    <p>&#127942;</p>
+                                    <p><span>&#127942;</span></p>
                                     :
                                     <p>{index + 1}</p>}
                                 </div>
@@ -82,12 +87,22 @@ class LeaderboardDetail extends Component {
                                     <hr className="points-divider"/>
                                 </div>
                                 <ManagePlayerPoints player={player} leaderboard={this.state.leaderboard} updatePlayerPoints={this.updatePlayerPoints} />
+                                    <hr className="points-divider"/>
+                                <DeletePlayer playerId={player.id} handleDeletePlayer={this.handleDeletePlayer} />
                             </article>
                             )
                         })}
                         </section> 
                     </>
                     : null
+                }
+                { this.state.leaderboard.id == this.props.id ? 
+                    <div className="button-wrap">
+                        <a href={`/leaderboards/${this.state.leaderboard.id}/add-player`}><button className="standard-button mr">Add Player</button></a>
+                        <DeleteLeaderboard leaderboardId={this.state.leaderboard.id} />
+                    </div>
+                    :
+                    <NotFound />
                 }
             </section>
         );

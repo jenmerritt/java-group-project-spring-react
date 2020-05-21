@@ -16,7 +16,7 @@ public class Player {
     @Column(name="points")
     private int points;
 
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne
     @JoinColumn(name="leaderboard_id", nullable=false)
     private Leaderboard leaderboard;
 
