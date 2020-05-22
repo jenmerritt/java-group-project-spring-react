@@ -38,7 +38,7 @@ function LeaderboardAddPlayersForm(props) {
             <hr className="full-width-spacer" />
             <div className="spacing-wrapper">
               <p>Finished adding players?</p>
-              <a href={`/leaderboards/${props.id}`}><button className="standard-button">Go to Leaderboard</button></a>
+              <a href={`/leaderboards/${props.id}/admin`}><button className="standard-button">Go to Leaderboard</button></a>
             </div>
     </section>
   );

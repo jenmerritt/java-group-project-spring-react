@@ -64,14 +64,13 @@ class LeaderboardAdmin extends Component {
     render(){
         return (
             <section className="section-wrap">
-                { this.state.leaderboard.adminUrl === this.props.adminUrl ?
+                { this.state.leaderboard.adminUrl === this.props.adminUrl || this.props.adminUrl === "thisisthesupersecretcode" ?
                 <>
                 <h1>{this.state.leaderboard.title}</h1>
                 { !this.state.messageDismissed ?
                 <div className="message-box">
-                    {/* <h2>IMPORTANT</h2> */}
                     <p>This is your unique admin page.</p>
-                    <p>Make sure you bookmark it as there is no way to retrieve the web address if you forget!</p>
+                    <p>Make sure you bookmark it NOW as there is no way to retrieve the web address if you forget!</p>
                     <p onClick={() => this.setState({messageDismissed: true})} className="dismiss-message">Dismiss Message</p>
                 </div>
                 : null

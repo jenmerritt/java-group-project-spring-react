@@ -21,7 +21,7 @@ public class Leaderboard {
     @JsonIgnore
     @OneToMany(mappedBy = "leaderboard", cascade = CascadeType.REMOVE)
     private List<Player> players;
-
+    
     private String adminUrl;
 
     @Column(name="isHidden")
