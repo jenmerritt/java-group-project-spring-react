@@ -21,7 +21,7 @@ function LeaderboardAddPlayersForm(props) {
 
     props.onPlayerSubmit({
       name: nameToSubmit,
-      leaderboard: `http://localhost:8080/leaderboards/${props.id}`
+      leaderboard: `https://how-many-points-api.herokuapp.com/leaderboards/${props.id}`
     })
 
     setName("")

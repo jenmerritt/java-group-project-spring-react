@@ -20,7 +20,7 @@ class LeaderboardDetail extends Component {
     }
 
     fetchLeaderboard(){
-        fetch(`http://localhost:8080/leaderboards/${this.props.id}`)
+        fetch(`https://how-many-points-api.herokuapp.com/leaderboards/${this.props.id}`)
         .then(res => res.json())
         .then(fetchedLeaderboard => {
             if(fetchedLeaderboard._embedded){

@@ -23,7 +23,7 @@ class LeaderboardAdmin extends Component {
     }
 
     fetchLeaderboard(){
-        fetch(`http://localhost:8080/leaderboards/${this.props.id}`)
+        fetch(`https://how-many-points-api.herokuapp.com/leaderboards/${this.props.id}`)
         .then(res => res.json())
         .then(fetchedLeaderboard => {
             if(fetchedLeaderboard._embedded){
@@ -35,7 +35,7 @@ class LeaderboardAdmin extends Component {
     }
 
     updatePlayerPoints(pointsToUpdate, playerId){
-        fetch(`http://localhost:8080/players/${playerId}`, {
+        fetch(`https://how-many-points-api.herokuapp.com/players/${playerId}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -52,7 +52,7 @@ class LeaderboardAdmin extends Component {
 
     handleDeletePlayer(playerId){
 
-        fetch(`http://localhost:8080/players/${playerId}`, {
+        fetch(`https://how-many-points-api.herokuapp.com/players/${playerId}`, {
             method: 'DELETE',
         })
         .then(() => this.fetchLeaderboard())

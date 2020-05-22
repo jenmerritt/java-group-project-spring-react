@@ -25,7 +25,7 @@ class Dashboard extends Component {
     }
 
     fetchLeaderboards(){
-        const url = 'http://localhost:8080/leaderboards'
+        const url = 'https://how-many-points-api.herokuapp.com/leaderboards'
 
         fetch(url)
         .then(res => res.json())
@@ -34,7 +34,7 @@ class Dashboard extends Component {
     }
 
     handleLeaderboardSubmit(submittedLeaderboard){
-        fetch('http://localhost:8080/leaderboards', {
+        fetch('https://how-many-points-api.herokuapp.com/leaderboards', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -59,7 +59,7 @@ class Dashboard extends Component {
     }
 
     handlePlayerSubmit(submittedPlayer){
-        fetch('http://localhost:8080/players', {
+        fetch('https://how-many-points-api.herokuapp.com/players', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

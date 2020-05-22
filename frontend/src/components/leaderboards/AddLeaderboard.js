@@ -25,8 +25,6 @@ function AddLeaderboard(props) {
     const seconds = date.getTime();
     const timeString = seconds.toString();
 
-    // console.log(timeString)
-
     props.onLeaderboardSubmit({
       title: titleToSubmit,
       adminUrl: timeString,

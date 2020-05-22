@@ -8,7 +8,7 @@ function DeleteLeaderboard(props) {
     function handleDeleteLeaderboard(event){
         event.preventDefault();
 
-        fetch(`http://localhost:8080/leaderboards/${props.leaderboardId}`, {
+        fetch(`https://how-many-points-api.herokuapp.com/leaderboards/${props.leaderboardId}`, {
             method: 'DELETE',
         })
         .then(() => window.location.href="/leaderboards")
