@@ -1,5 +1,7 @@
 # How Many Points App
 
+![how many points](how-many-points.png)
+
 Initially created as Group Project - full stack app using Spring backend and React front end.
 
 Refactored to different concept and design as personal project following CodeClan.
